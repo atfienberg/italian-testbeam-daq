@@ -6,13 +6,13 @@ import eventlet
 eventlet.monkey_patch()
 
 from flask import Flask, render_template, send_from_directory, redirect, url_for
-from flask import g, request, session
+from flask import request, session
 from flask_socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 from uuid import uuid4
 import couchdb
 from couchdb.design import ViewDefinition
-import os, glob, datetime
+import os, datetime
 import threading
 import collections
 
@@ -455,7 +455,6 @@ def send_runlog(msg):
 def generate_runlog():
     '''generates the runlog from db'''
     #generate column headers
-    start = time()
     runlog_headers = get_runlog_headers()
 
     #fill runlog lines with database info
