@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2> Filter Wheel </h2> <br>
+Current wheel setting: <b id="filterSetting"></b><br>
+<br>
+New setting: <input type=text id="newSetting" size="1"></input>
+<br>
+<b><font color="red" id="settingError" style="display: none">Invalid setting!</font></b>
+<br>
+<h2> BK Precision </h2>
+<b><font color="red" id="bk_failure" style="display: none">BK not responding!</font></b><br>
+BK output <b id="bk_output"></b> <button id="bk_power_button" style="display: none"></button>
+<br><br>
+voltage set point: <b id="bk_set_pt"></b> new: <input type=text id="new_set_pt" size="1"></input> V
+<b><font color="red" id="bk_error" style="display: none">Invalid setting!</font></b>
+<br><br>
+current limit: <b id="bk_i_limit"></b>
+<br><br>
+measured output voltage: <b id="bk_measured"></b>
+
+<script type="text/javascript" charset="utf-8">
+  
+  $(document).ready(function(){
+      namespace = '/online';
+      var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+
+      setInterval(function() {
+	  socket.emit('filter position?');
+	  socket.emit('bk status');
+      }, 5000);
+
+      socket.emit('filter position?');
+      socket.emit('bk status');
+
+      socket.on('filter position is: ', function(msg){
+	  $('#filterSetting').text(String(msg.position));
+      });
+      
+      socket.on('filter moved', function(msg){
+	  socket.emit('filter position?')
+	  $('#newSetting').val("");
+	  $('#settingError').hide();
+      });
+
+      
+
+      socket.on('invalid setting', function(msg){
+	  $('#settingError').show();
+      });
+
+      socket.on('invalid bk setting', function(msg){
+	  $('#bk_error').show();
+      });
+
+      socket.on('bk failure', function(){
+	  $('#bk_failure').show();
+      });
+
+      socket.on('bk status is', function(msg){
+	  $('#bk_error').hide();
+	  $('#bk_failure').hide();
+	  if(msg.output == '1'){
+	      $('#bk_output').text('ON');
+	      $('#bk_power_button').text('switch OFF');
+	  }
+	  else{
+	      $('#bk_output').text('OFF');
+	      $('#bk_power_button').text('switch ON');
+	  }
+	  $('#bk_output').show();
+	  $('#bk_power_button').show();
+	  
+	  $('#bk_set_pt').text(msg.set_pt + ' V');
+	  $('#bk_set_pt').show()
+
+	  $('#bk_i_limit').text(msg.i_limit + ' A');
+	  $('#bk_i_limit').show()
+	  
+	  $('#bk_measured').text(msg.measured + ' V');
+	  $('#bk_measured').show()
+      });
+
+      socket.on('bk changed', function(){
+	  socket.emit('bk status');
+      });
+
+      $('#newSetting').keydown(function (e){
+	  if(e.keyCode == 13){
+	      socket.emit("new filter wheel setting", {"new_setting" : $('#newSetting').val() } );
+	  }	   
+      });
+
+      $('#bk_power_button').click(function() {
+	  socket.emit("toggle bk power");
+      });
+      
+      $('#new_set_pt').keydown(function (e){
+	  if(e.keyCode == 13){
+	      socket.emit("new voltage pt", {"new_setting" : $('#new_set_pt').val() } );
+	      $('#new_set_pt').val('');
+	  }	   
+      });
+  });
+
+</script>
+
+{% endblock body %}

@@ -9,14 +9,14 @@
         "direct_memory_mode":false,
 
 	"channel_offset":[
-		1.0,
+		0.5,
 		-2.0,
 		-0.0,
 		-0.0
 	],
 
 	"channel_gain":[
-		60,
+		150,
 		100,
 		30,
 		30

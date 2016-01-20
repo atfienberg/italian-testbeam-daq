@@ -5,7 +5,7 @@
 <form action="{{ url_for('start_run') }}" 
 	enctype="multipart/form-data" method=post>
 <table>
-	<thead><h3>Starting Run {{ (info['last_run'] + 1|int)| string}} </h3></thead>
+	<thead><h3>Starting Run {{ (last + 1|int)| string}} </h3></thead>
 
 	{% for attr in info['attr'] %}
 		<tr>

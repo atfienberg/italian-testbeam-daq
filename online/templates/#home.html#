@@ -1,7 +1,0 @@
-{% extends "layout.html" %}
-{% block body %}
-  <br>
-    <form action = {{ url_for('start_run') }}>
-      <input type=submit value=Begin Run></form></td>
-  {% endblock body %}
-  

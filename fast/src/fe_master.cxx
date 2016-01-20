@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
       std::getline(ss, msg_string, ':');
 
       if (msg_string == string("START") && !is_running) {
-	
+
 	// Reload the external config.
 	LoadConfig();
 
@@ -123,6 +123,7 @@ int main(int argc, char *argv[])
 
 	// Setup the config and run.
 	SetupConfig();
+
         StartRun();
 
       } else if (msg_string == string("STOP") && is_running) {
@@ -141,7 +142,7 @@ int main(int argc, char *argv[])
 int LoadConfig() 
 {
   // Load up the configuration file to refresh the internal one.
-  cout << "Opening config file: " << conf_file << endl;
+
   ptree conf;
   read_json(conf_file, conf);
   write_json(tmp_conf_file, conf);
@@ -164,6 +165,7 @@ int SetupConfig()
 
     workers.PushBack(new WorkerFake(name, conf_dir + dev_conf_file));
   } 
+  
 
   // Set up the sis3350 devices.
   BOOST_FOREACH(const ptree::value_type &v, 
@@ -173,6 +175,7 @@ int SetupConfig()
     string dev_conf_file(v.second.data());
     
     workers.PushBack(new WorkerSis3350(name, conf_dir + dev_conf_file));
+
   }  
 
   // Set up the sis3302 devices.
@@ -267,14 +270,11 @@ int SetupConfig()
 
 int FreeConfig() 
 {
-  cout << "Free the event builder." << endl;
   delete event_builder;
 
-  cout << "Freeing the workers." << endl;
   // Delete the allocated workers.
   workers.Resize(0);
 
-  cout << "Freeing the writers." << endl;
   // Delete the allocated writers.
   for (auto &writer : writers) {
     delete writer;
@@ -286,7 +286,6 @@ int FreeConfig()
 
 // Flush the buffers and start data taking.
 int StartRun() {
-  cout << "Starting run." << endl;
   is_running = true;
 
   // Start the event builder
@@ -305,7 +304,6 @@ int StartRun() {
 
 // Write the data file and reset workers.
 int StopRun() {
-  cout << "Stopping run." << endl;
   is_running = false;
 
   // Stop the event builder

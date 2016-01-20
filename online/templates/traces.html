@@ -7,12 +7,18 @@
       </option>
     {% endfor %}
   </select>
-  <img id="img" 
-       src="" width="80%" style="display: none"></img>
-    <br>
-  <button id="update">Update Trace</button> <br><br>
-  x_min <input type=text id="min" size="1" value="0"></input>
-  x_max <input type=text id="max" size="1" value="1024"></input> 
+  <div id="trace_plot" style="width: 50em; height: 30em; margin: 0"></div>
+  <button id="update">Update Trace</button> 
+  x_min <input type=text id="min" size="4" value="0"></input>
+  x_max <input type=text id="max" size="4" value="1024"></input> 
+  {% if in_progress %}
+    <br><br>
+    <button id="continual">Start Continual Refresh</button>
+    <button id="stop" style="display: none">Stop Continual Refresh</button>
+    <input type=text id="rep_rate" size="3" value="{{r_rate}}">
+   Refresh Rate (Hz)</input>
+    <font color="red" id="rate_failure" style="display: none">rate must between 0 and 5 Hz</font>
+  {% endif %}
 
   <script type="text/javascript" charset="utf-8">
        $(document).ready(function(){
@@ -23,39 +29,96 @@
 					"x_max":$('#max').val(),
 					"selected":$('#device').val()});
 
-	   socket.on('trace ready', function(msg) {
-               $('#img').show();
-	       $('#img').attr('src',msg.path);
-	       $('#min').val(msg.x_min);
-	       $('#max').val(msg.x_max);
+	   socket.on('trace data', function(msg) {
+	       var plotdata = google.visualization.arrayToDataTable(msg.data);
+	       var options = {
+		   title : msg.title,
+		   curveType: 'function',
+		   legend: 'none',
+		   hAxis: {
+		       title: "sample #"
+		   },
+		   vAxis: {
+		       title: "adc counts"
+		   },
+		   fontSize: 18
+	       };
+	       var traceplot = new google.visualization.LineChart(document.getElementById('trace_plot'));
+	       traceplot.draw(plotdata, options);
 	   });
 
+	   function update_trace(){
+	       socket.emit('update trace', {"x_min":$('#min').val(),
+					    "x_max":$('#max').val(),
+					    "selected":$('#device').val()});
+	   }
+	   
+	   $('#update').click(function () {
+	       update_trace();
+	   });
+
+	   $('#min').keydown(function (e){
+	       if(e.keyCode == 13){
+		   update_trace();
+	       }
+	   });
+
+	   $('#max').keydown(function (e){
+	       if(e.keyCode == 13){
+		   update_trace();
+	       }
+	   });
+	  
+	   var interval = 0;    
+
+	   function continual(){
+	       var rate = -1;
+
+	       if ($.isNumeric($('#rep_rate').val())){
+		   rate = $('#rep_rate').val();
+	       }
+	       
+	       if ( (rate > 0) && (rate <= 5) ){	   
+		   $('#rate_failure').hide();
+		   if(interval != 0){
+		       clearInterval(interval);
+		   }
+		   interval = setInterval(function() {
+		       update_trace()
+		   }, 1000/rate);
+		   $('#continual').hide();
+		   $('#stop').show();
+	       }
+	       else if (rate == 0){
+		   stop();
+	       }
+	       else{
+		   $('#rate_failure').show();
+		   $('#rep_rate').val("");
+	       }
+	   }
+	   
+	   $('#continual').click(function() {
+	       continual();
+	   });
+	   
+	   $('#rep_rate').keydown(function (e){
+	       if(e.keyCode == 13){
+		   continual();
+	       }
+	   });
+
+	   function stop(){
+	       clearInterval(interval);
+	       $('#continual').show();
+	       $('#stop').hide();
+	   } 
+	   
+	   $('#stop').click(function() {
+	       stop();
+	   });	   
+ 
        });
-
-       function update_trace(){
-	   namespace = '/online';
-	   var socket = io.connect('http://' + document.domain + 
-				  ':' + location.port + namespace);
-	   socket.emit('update trace', {"x_min":$('#min').val(),
-				       "x_max":$('#max').val(),
-				       "selected":$('#device').val()});
-       }
-
-      $('#update').click(function () {
-	  update_trace();
-      });
-
-      $('#min').keydown(function (e){
-	  if(e.keyCode == 13){
-	      update_trace();
-	  }
-      });
-
-      $('#max').keydown(function (e){
-	  if(e.keyCode == 13){
-	      update_trace();
-	  }
-      });
       
 
     </script>

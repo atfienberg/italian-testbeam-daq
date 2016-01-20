@@ -2,28 +2,26 @@
 #Fienberg@uw.edu
 #online display for SLAC test beam run
 
-from gevent import monkey
-monkey.patch_all()
+import eventlet
+eventlet.monkey_patch()
 
 from flask import Flask, render_template, send_from_directory, redirect, url_for
 from flask import g, request, session
-from flask.ext.socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit
 from werkzeug.utils import secure_filename
 from uuid import uuid4
 import couchdb
 from couchdb.design import ViewDefinition
 import os, glob, datetime
 import threading
+import collections
+
+import serial
 
 import data_io
 import zmq, json
 from time import sleep, time
 from setproctitle import setproctitle
-
-import numpy as np
-import matplotlib
-matplotlib.use('Agg')
-from matplotlib import pyplot as plt
 
 # Set process name
 setproctitle("daqometer")
@@ -41,7 +39,7 @@ app.config.update(dict(
     IMAGE_UPLOADS=['.jpg', '.jpe', '.jpeg', '.png', '.gif', '.svg', '.bmp'],
     DEBUG=True))
 app.config['SECRET_KEY'] = '\xf5\x1a#qx%`Q\x88\xd1h4\xc3\xba1~\x16\x11\x81\t\x8a?\xadF'
-socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode='eventlet')
 
 
 #Define attributes of a run
@@ -66,13 +64,12 @@ def new_run():
     the previous run and prompt user for summary information"""
     
     last_data = {}
-    if run_info['last_run'] != 0:
-        db = connect_db(run_info['db_name'])
-        last_data = db[db['toc'][str(run_info['last_run'])]]
+    if last_run_number() != 0:
+        last_data = get_last_data()
         last_data['Description'] = ''
 
     return render_template('new_run.html', info=run_info, data=last_data, 
-                           new=True, in_progress=running)
+                           last=last_run_number(), new=True, in_progress=running)
 
 @app.route('/start', methods=['POST'])
 def start_run():
@@ -80,13 +77,18 @@ def start_run():
     This entails saving the user configuration in couchdb and 
     launching the data getter and emitter"""
     global running
-
     data = copy_form_data(run_info, request)
+    if running:
+        error = 'There is already a run in progress!'
+        return render_template('new_run.html', info=run_info, 
+                               last=last_run_number(), data=data, error=error, new=True,
+                               in_progress=running)
+
     complete = check_form_data(run_info, data)
     if not complete:
         error = "All fields in the form must be filled."
         return render_template('new_run.html', info=run_info, 
-                               data=data, error=error, new=True,
+                               last=last_run_number(), data=data, error=error, new=True,
                                in_progress=running)
 
     # Send a start run signal to fe_master.
@@ -103,22 +105,31 @@ def start_run():
 
     msg = "CONNECT"
     handshake_sck.send(msg)
-    if (handshake_sck.recv() == msg):
-        # Connection established.
-        start_sck.send("START:%05i:" % (run_info['last_run'] + 1))
-
-    handshake_sck.close()
-    start_sck.close()
-    context.destroy()           
+    reply = ""
+    sleep(0.2) #give fast-daq chance to reply
+    try:
+        reply = handshake_sck.recv(zmq.NOBLOCK)
+    except zmq.error.Again:
+        error = "fast-daq not responding (is it running?)"
+        return render_template('new_run.html', info=run_info, 
+                               last=last_run_number(), data=data, error=error, new=True,
+                               in_progress=running)
+    else:
+        if reply == msg:
+            # Connection established.
+            start_sck.send("START:%05i:" % (last_run_number() + 1))
+    finally:
+        handshake_sck.close()
+        start_sck.close()
+        context.destroy()           
     
     #save the run info
-    db = get_db(run_info['db_name'])
-    run_info['last_run'] += 1
-    data['run_number'] = run_info['last_run']
+    db = connect_db(run_info['db_name'])
+    data['run_number'] = last_run_number() + 1
     now = datetime.datetime.now()
-    data['Start Date'] = "%02i/%02i" % (now.month, now.day)
+    data['Start Date'] = "%02i/%02i/%04i" % (now.month, now.day, now.year)
     data['Start Time'] = "%02i:%02i" % (now.hour, now.minute)
-    save_db_data(db, data)
+    db.save(data)
 
     #start the run and launch the data emitter
     running = True
@@ -161,14 +172,14 @@ def end_run():
         running = False
         data_io.end_run()
 
-    db = connect_db(run_info['db_name'])
-    data = db[db['toc'][str(run_info['last_run'])]]
+    data = get_last_data()
     data['Events'] = data_io.eventCount
     data['Rate'] = "%.1f" % data_io.rate
     now = datetime.datetime.now()
-    data['End Date'] = "%02i/%02i" % (now.month, now.day)
+    data['End Date'] = "%02i/%02i/%04i" % (now.month, now.day, now.year)
     data['End Time'] = "%02i:%02i" % (now.hour, now.minute)
-    print "%i events" % data_io.eventCount
+
+    db = connect_db(run_info['db_name'])
     db.save(data)
 
     sleep(0.1)
@@ -235,21 +246,29 @@ def traces():
 
     current_selection = session['device'] + ' channel ' + str(session['channel'])
 
+    if 'refresh_rate' not in session:
+        session['refresh_rate'] = 1.
+
     return render_template('traces.html', options=devices, 
+                           r_rate=session['refresh_rate'],
                            selected=current_selection, in_progress=running)
 
-@app.route('/beam')
-def beam_display():
-    """displays wire chamber hists"""
-    if len(data_io.hists)==0:
-        return render_template('no_data.html', in_progress=running)
-    
-    if 'b_refresh_rate' not in session:
-        session['b_refresh_rate'] = 1.
+@app.route('/controls')
+def controls():
+    return render_template('controls.html', in_progress=running)
 
-    return render_template('beam_monitor.html',
-                           r_rate=session['b_refresh_rate'],
-                           in_progress=running)
+# @app.route('/beam')
+# def beam_display():
+#     """displays wire chamber hists"""
+#     if len(data_io.hists)==0:
+#         return render_template('no_data.html', in_progress=running)
+    
+#     if 'b_refresh_rate' not in session:
+#         session['b_refresh_rate'] = 1.
+
+#     return render_template('beam_monitor.html',
+#                            r_rate=session['b_refresh_rate'],
+#                            in_progress=running)
 
 @app.route('/nodata')
 def no_data():
@@ -260,22 +279,21 @@ def no_data():
 @app.route('/revision_select')
 def revision_select():
     """display page where user can select a run to revise"""
-    if run_info['last_run']<10:
+    last = last_run_number()
+    if last < 10:
         end = 0
     else:
-        end = run_info['last_run']-10
+        end = last - 10
     
     return render_template("revision_select.html", 
                            in_progress=running,
-                           last_ten=range(run_info['last_run'],end,-1))
+                           last_ten=range(last,end,-1))
 
 @app.route('/revise/<string:run_num>')
 def revise(run_num):
     """display page for revising the given run"""
     try:
-        db = connect_db(run_info['db_name'])
-        old_data = db[db['toc'][run_num]]
-
+        old_data = get_run_data(int(run_num))
         session['revision_number']=run_num
         return render_template('revise.html', num=run_num, 
                                info=run_info, data=old_data,
@@ -295,12 +313,19 @@ def save_revision():
                                in_progress=running)
         
     #save the revision    
-    db = connect_db(run_info['db_name'])
-    data = db[db['toc'][str(session['revision_number'])]]
+    data = {}
+    try:
+        data = get_run_data(int(session['revision_number']))
+    except:
+        error = 'error saving revision!'
+        return render_template('revise.html',num=session['revision_number'], 
+                               info=run_info, data=new_data,error=error, 
+                               in_progress=running)
     for attr in run_info['attr']:
         data[attr] = new_data[attr]
 
-    save_db_data(db, data)
+    db = connect_db(run_info['db_name'])
+    db.save(data)
     return render_template('revision_success.html', in_progress=running)
 
 @app.route('/runlog')
@@ -315,34 +340,43 @@ def get_upload(filename):
     filename = os.path.basename(filename)
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/nEvents')
+def n_events_query():
+    return repr(data_io.eventCount)
+
 def send_events():
     """sends data to the clients while a run is going"""
-    while not data_io.runOver.isSet():
+    last = last_run_number()
+    while not data_io.run_over.isSet():
         sleep(0.1)
-        socketio.emit('event info', {"count" : data_io.eventCount, "rate" : data_io.rate},
+        socketio.emit('event info', {"count" : data_io.eventCount, "rate" : data_io.rate, 
+                                     "runNumber" : last },
                       namespace='/online')
         
 
 @socketio.on('update histogram', namespace='/online')
 def update_hist(msg):
-    """update the histogram upon request from client and then
-    respond when it's ready"""
-
+    """send data to client needed to make histogram"""
     try:
         selection = msg['selected'].split(' ')
-        session['device'] = selection[0]
-        session['channel'] = int(selection[-1])
-    except: 
-        pass
-    
-    name, path = generate_hist()
+        device = selection[0]
+        channel = int(selection[-1])
+        this_dev = device + ' channel ' + str(channel)
 
-    emit('histogram ready', {"path" : path});
+        title = 'Run %i Event %i, %s channel %i' % (last_run_number(), 
+                                                    data_io.eventCount,
+                                                    device, 
+                                                    channel)              
 
+        data = [['amplitudes']]
+        data.extend([[i] for i in data_io.hists[this_dev]])
+        emit('histogram ready', {"title" : title, "data" : data});
+    except:
+        pass    
+        
 @socketio.on('update trace', namespace='/online')
 def update_trace(msg):
-    """update the histogram upon request from client and then
-    respond when it's ready"""
+    """send data to client needed to make trace"""
     try: 
         xmin = int(msg['x_min'])
         xmax = int(msg['x_max'])
@@ -358,126 +392,95 @@ def update_trace(msg):
         xmax = 1024
 
     selection = msg['selected'].split(' ')
-    session['device'] = selection[0]
-    session['channel'] = int(selection[-1])
 
-
-
-    name, path = generate_trace(xmin, xmax)
-
-    emit('trace ready', {"path" : path, "x_min" : xmin, "x_max" : xmax});
-
-@socketio.on('update beam', namespace='/online')
-def update_beam():
-
-    name, path = generate_beam()
+    device = selection[0]
+    channel = int(selection[-1])
     
-    if name != None:
-        emit('beam ready', {'path': path});
-    
-@socketio.on('start continual update', namespace='/online')
-def start_continual():
-    """begins the chain of continual histogram updates"""
-    session['updating_hist'] = True
-    continue_updating()
+    title = 'Run %i Event %i, %s channel %i' % (last_run_number(), data_io.eventCount,
+                                                device, channel)
+                  
+    data = [['sample', 'adc counts']]
 
-@socketio.on('start continual beam update', namespace='/online')
-def start_continual_beam():
-    """begins the chain of continual beam updates"""
-    session['updating_beam'] = True
-    continue_updating_beam()  
- 
-@socketio.on('continue updating', namespace='/online')
-def continue_updating():
-    """updates the histogram and then informs the client"""
-    sleep(1.0/session['refresh_rate'])
+    data.extend([[i, data_io.data[device]['trace'][channel][i]] for i in xrange(xmin, xmax)])
+    emit('trace data', {'title' : title, 'data' : data})
 
-    if session['updating_hist']:
-        update_hist('')
-        emit('updated')
+def get_runlog_headers():
+    runlog_headers = 'Run#'
+    for attr in run_info['attr']:
+        runlog_headers += ', ' + attr
+    for info in run_info['log_info']:
+        runlog_headers += ', ' + info
+    return runlog_headers
 
-@socketio.on('continue updating beam', namespace='/online')
-def continue_updating_beam():
-    """updates the beam and then informs the client"""
-    sleep(1.0/session['b_refresh_rate'])
-
-    print 'continue updating beam'
-
-    if session['updating_beam']:
-        update_beam()
-        emit('updated beam')
-
-@socketio.on('refresh rate', namespace='/online')
-def set_refresh(msg):
-    """sets the histogram refresh rate"""
+@socketio.on('runlog data', namespace='/online')
+def send_runlog(msg):
+    """generate runlog data and send it"""
+    n_rows = 0
     try:
-        new_rate = float(msg)
-        if 0 < new_rate <= 5.0:
-            session['refresh_rate'] = new_rate
+        n_rows = int(msg['n_rows'])
     except ValueError:
-        pass
-        
-    emit('current rate', str(session['refresh_rate']))
+        emit('bad row value')
+        return
+    if n_rows < 1:
+        emit('bad row value')
+        return        
 
-@socketio.on('beam refresh rate', namespace='/online')
-def set_refresh_beam(msg):
-    """sets the beam refresh rate"""
-    try:
-        new_rate = float(msg)
-        if 0 < new_rate <= 1.0:
-            session['b_refresh_rate'] = new_rate
-    except ValueError:
-        pass
-
-    print 'set refresh rate'
-    
-    emit('current beam rate', str(session['refresh_rate']))
-
-@socketio.on('stop continual update', namespace='/online')
-def stop_continual():
-    """ends the chain of continual histogram updates"""
-    session['updating_hist'] = False
-
-@socketio.on('stop continual beam update', namespace='/online')
-def stop_continual_beam():
-    """ends the chain of continual beam updates"""
-    print ' stop continual beam'
-    session['updating_beam'] = False
+    rows = []
+    rows.append(get_runlog_headers().split(','))
+    last = last_run_number()
+    if(n_rows > last):
+        n_rows = last
+    view = db.view('_design/all/_view/all', descending=True)[last:last-n_rows+1]
+    for doc in view:
+        data = doc['value']
+        thisRow = []
+        if 'run_number' in data:
+            thisRow.append(str(data['run_number']))
+        else:
+            thisRow.append('N/A')
+        for attr in run_info['attr']:
+            if attr in data:
+                thisRow.append(str(data[attr]))
+            else: 
+                thisRow.append('N/A')
+        for info in run_info['log_info']:
+            if info in data:
+                thisRow.append(str(data[info]))
+            else:
+                thisRow.append('N/A')
+        rows.append(thisRow)
+    emit('rows: ', rows)
 
 @socketio.on('generate runlog', namespace='/online')
 def generate_runlog():
     '''generates the runlog from db'''
     #generate column headers
     start = time()
-    runlog_headers = ''
-    for attr in run_info['attr']:
-        runlog_headers += ', ' + attr
-    for info in run_info['log_info']:
-        runlog_headers += ', ' + info
-        
+    runlog_headers = get_runlog_headers()
+
     #fill runlog lines with database info
-    runlog_lines = []
+    runlog_lines = collections.deque()
     db = connect_db(run_info['db_name'])
-    n_runs = int(db['toc']['n_runs'])
+    n_runs = get_last_data()['run_number']
     counter = 0
     for doc in db.view('_design/all/_view/all'):
         data = doc['value']
     
-        runlog_lines.append('')
+        runlog_lines.appendleft('')
         if 'run_number' in data:
-            runlog_lines[-1] += str(data['run_number'])
+            runlog_lines[0] += str(data['run_number'])
         else:
-            runlog_lines[-1] += 'N/A'
+            runlog_lines[0] += 'N/A'
         for attr in run_info['attr']:
                 if attr in data:
-                    runlog_lines[-1] += ', ' + str(data[attr])
+                    runlog_lines[0] += ', ' + str(data[attr])
                 else: 
-                    runlog_lines[-1] += (', N/A')
+                    runlog_lines[0] += (', N/A')
         for info in run_info['log_info']:
             if info in data:
-                runlog_lines[-1] += ', ' + str(data[info])
+                runlog_lines[0] += ', ' + str(data[info])
             else:
-                runlog_lines[-1] += (', N/A')
+                runlog_lines[0] += (', N/A')
 
         counter+=1
         progress = 100*float(counter)/n_runs
@@ -490,7 +493,6 @@ def generate_runlog():
         runlog.write(runlog_headers)
         for line in runlog_lines:
             runlog.write('\n' + line)
-    print '%i seconds' % (time() - start)
     
     emit('runlog ready')
 
@@ -501,91 +503,159 @@ def on_refresh():
     if running:
         emit('event info', {"count" : data_io.eventCount, "rate" : data_io.rate})
 
-@socketio.on('connect', namespace='/online')
-def test_connect():
-    """communicates upon connection with a client"""
-    emit('my response', {'data': 'Connected'})
+def read_serial(s, terminator='\n'):
+    """tries to read one byte at a time but breaks if timeout"""
+    response = ''
+    while True:
+        old_len = len(response)
+        response += s.read(1)
+        try:
+            if response[-1] == terminator:
+                break
+        except IndexError:
+            #timed out
+            break
+        if len(response) == old_len:
+            #timed out
+            break
+        response = response.strip()
+    return response.strip()
+
+@socketio.on('filter position?', namespace='/online')
+def query_filter_position():
+    filter = serial.Serial('/dev/filterwheel', 115200, timeout=1)
+    filter.write('pos?\r')
+    counter = 0
+    while True:
+        try:
+            response = read_serial(filter, '>')
+            if(response[-1] == '>'):
+                emit('filter position is: ', {'position' : response[-2]})
+                return
+        except IndexError:
+            counter += 1
+            sleep(0.01)
+            if counter == 500:
+                return
+
+@socketio.on('new filter wheel setting', namespace='/online')
+def new_filter_wheel_setting(msg):
+    badValue = False
+    try:
+        new_setting = int(msg['new_setting'])
+    except ValueError:
+        badValue = True
+    if not badValue and new_setting < 7 and new_setting > 0:
+        filter = serial.Serial('/dev/filterwheel', 115200, timeout=1)
+        filter.write('pos=%s\r' % repr(new_setting))
+        read_serial(filter)
+        emit('filter moved')
+    else:
+        emit('invalid setting')
+
+@socketio.on('bk status', namespace='/online')
+def query_bk_status():
+    bk = serial.Serial('/dev/keyspan', 4800, timeout=1)
+
+    #make sure we are current limited at desired level
+    current_limit = 0.005
+    #seems to like being made contact with initially
+    bk.write('*IDN?\n')
+    read_serial(bk)
+
+    try: 
+        bk.write('SOUR:CURR?\n')
+        response = ''
+        response = read_serial(bk) 
+        if float(response) != current_limit:
+            bk.write('SOUR:CURR % .4f\n' % current_limit)
+            bk.write('SOUR:CURR?\n')
+            response = read_serial(bk)
+            if float(response) != current_limit:
+                #failed to set current limit, return here
+                emit('bk failure')
+                return
+    except ValueError:
+        #couldn't convert to float for some reason, something weird happening
+        emit('bk failure')
+        return
+
+    status = {}
+
+    #get output status
+    bk.write('OUTP:STAT?\n')
+    status['output'] = read_serial(bk)
+    
+    #get set point
+    bk.write('SOUR:VOLT?\n')
+    status['set_pt'] = read_serial(bk)
+    
+    #get measured voltage
+    bk.write('MEAS:VOLT?\n')
+    status['measured'] = read_serial(bk)
+    
+    bk.write('SOUR:CURR?\n')
+    status['i_limit'] = read_serial(bk)
+
+    emit('bk status is', status)
+
+@socketio.on("toggle bk power", namespace='/online')
+def toggle_bk_power():
+    bk = serial.Serial('/dev/ttyUSB1', 4800, timeout=0.5)
+
+    #really seems to need two commands to start out for some reason
+    bk.write('*idn?\nOUTP:STAT?\n')
+    read_serial(bk)
+    
+    bk_on = False
+    try:
+        bk_on = int(read_serial(bk)) == 1
+    except ValueError:
+        #something didn't work
+        return 
+    
+    if bk_on:
+        bk.write('OUTP:STAT 0\n')
+    else:
+        bk.write('OUTP:STAT 1\n')
+    
+    sleep(1)
+    emit('bk changed')        
+
+@socketio.on("new voltage pt", namespace='/online')
+def new_bk_voltage(msg):
+    new_voltage = 0
+    try:
+        new_voltage = float(msg['new_setting'])
+    except ValueError:        
+        emit('invalid bk setting')
+        return
+        
+    #temporary limits for now
+    v_low = 0
+    v_high = 70.0
+    if new_voltage < v_low or new_voltage > v_high:
+        emit('invalid bk setting')
+        return
+
+    bk = serial.Serial('/dev/ttyUSB1', 4800, timeout=0.5)
+    
+    bk.write("*IDN?\n")
+    read_serial(bk)
+    bk.write('SOUR:VOLT % .4f\n' % new_voltage)
+    bk.write('SOUR:VOLT?\n')
+    try:
+        if float(read_serial(bk)) == new_voltage:
+            emit('bk changed')
+        else: 
+            emit('bk failure')
+    except:
+        emit('bk failure')        
 
 def broadcast_refresh():
     """tells all clients to refresh their pages. This is called when a run begins
     or ends"""
     socketio.emit('refresh', {'data': ''}, namespace='/online')
-
-def generate_hist():
-    """updates the online histogram"""
-    plt.clf()
-  
-    try:
-        this_dev = session['device'] + ' channel ' + str(session['channel'])
-        plt.hist(data_io.hists[this_dev], 100)
-        plt.title('Run %i Event %i, %s channel %i' % 
-                  (run_info['last_run'], data_io.eventCount,
-                   session['device'], session['channel']))
-    except IndexError:
-        return 'failed', 'failed'
-
-    for temp_file in glob.glob(app.config['UPLOAD_FOLDER'] + '/temp_hist*'):
-        os.remove(temp_file)
-    filename = unique_filename('temp_hist.png')
-    filepath = upload_path(filename)
-    plt.savefig(filepath)
-    
-    return filename, filepath
- 
-def generate_trace(xmin, xmax):
-    """generate the trace plot"""
-    plt.clf()
-    plt.plot(data_io.data[session['device']]['trace'][session['channel']])
-    plt.title('Run %i Event %i, %s channel %i' % 
-              (run_info['last_run'], data_io.eventCount,
-              session['device'], session['channel']))
-    plt.xlim([xmin,xmax])
-
-    for tempFile in glob.glob(app.config['UPLOAD_FOLDER'] + '/temp_trace*'):
-        os.remove(tempFile)
-    filename = unique_filename('temp_trace.png')
-    filepath = upload_path(filename)
-    plt.savefig(filepath)
-    
-    return filename, filepath
- 
-def generate_beam():
-    plt.clf()
-    
-    #grab data
-    x = data_io.wireX
-    y = data_io.wireY
-    
-    if len(x) == 0 or len(y) == 0:
-        return None, None
-
-    #make plot
-    ax1 = plt.subplot2grid((3,3),(0,0), colspan=2)
-    plt.hist(x, bins=50, range=[-5,5])
-    plt.xlim(-5,5)
-    ax1.axes.get_xaxis().set_visible(False)
-    ax1.axes.get_yaxis().set_visible(False)
-    ax2 = plt.subplot2grid((3,3),(1,0), colspan=2, rowspan=2)
-    plt.hist2d(x, y, bins=50, range=np.array([(-5,5),(-5,5)]))
-    plt.xlim(-5,5)
-    plt.ylim(-5,5)
-    plt.xlabel('x position')
-    plt.ylabel('y position')
-    ax3 = plt.subplot2grid((3,3),(1,2), rowspan=2)
-    plt.hist(y, bins=50, orientation='horizontal', range=[-5,5])
-    plt.ylim(-5,5)
-    ax3.axes.get_xaxis().set_visible(False)
-    ax3.axes.get_yaxis().set_visible(False)
-    
-    for temp_file in glob.glob(app.config['UPLOAD_FOLDER'] + '/temp_beam*'):
-        os.remove(temp_file)
-    filename = unique_filename('temp_beam.png')
-    filepath = upload_path(filename)
-    plt.savefig(filepath)
-
-    return filename, filepath
-    
-
    
 def unique_filename(upload_file):
      """Take a base filename, add characters to make it more unique, and ensure that it is a secure filename."""
@@ -608,6 +678,25 @@ def copy_form_data(info, req):
 
     return data
 
+def get_last_data():
+    """get data for the last run"""
+    db = connect_db(run_info['db_name'])
+    last = last_run_number()
+    try:
+        return iter(db.view('_design/all/_view/all', descending=True)[last]).next()['value']
+    except (KeyError, StopIteration):
+        return {}
+
+def get_run_data(run_num):
+    """get data for a given run"""
+    db = connect_db(run_info['db_name'])
+    data = {}
+    try:
+        data = iter(db.view('_design/all/_view/all')[run_num]).next()['value']
+    except StopIteration:
+        pass
+    return data
+
 def check_form_data(info, data):
     """Check each spot in the form data."""
     for key in info['attr']:
@@ -615,27 +704,6 @@ def check_form_data(info, data):
             return False
 
     return True
-
-def save_db_data(db, data):
-    """Save the entry to the db and enter it into the table of contents."""
-    # Form a map to the most recent entry.
-    toc = db.get('toc')
-        
-    # Create if null.
-    if (toc == None):
-        toc = {}
-        toc['n_runs'] = 0
-        toc['_id'] = 'toc'
-
-    # Increment n_entries if necessary.
-    if str(run_info['last_run']) not in toc:
-        toc['n_runs'] += 1
-
-    # Save the data.
-    idx, ver = db.save(data)
-    
-    toc[run_info['last_run']] = idx
-    db.save(toc)
 
 def connect_db(db_name):
     """Connect to the database if open, and start database if not running."""
@@ -653,39 +721,31 @@ def connect_db(db_name):
     except:
         client.create(db_name)
         db = client[db_name]
-        toc = {}
-        toc['n_runs'] = 0
 
-        toc['_id'] = 'toc'
-        db.save(toc)
+    return db
 
+def last_run_number():
+    """determines the last run number by looking in the database"""
+    db = connect_db(run_info['db_name'])
+    try:
+        return db.view('_design/all/_view/all').total_rows
+    except:
+        return 0
+
+if __name__ == '__main__':
     #create permanent view to all if one doesn't exist
+    db = connect_db(run_info['db_name'])    
     if '_design/all' not in db:
         view_def = ViewDefinition('all', 'all',''' 
 				  function(doc) { 
 				      if( doc.run_number )
 					  emit(parseInt(doc.run_number), doc);
 				  }''')
+        couch = couchdb.Server()
+        db = couch[run_info['db_name']]
         view_def.sync(db)
+        if '_design/all' not in db:
+            print 'error: cannot create view. Do you have credentials?'
+            sys.exit(0)
 
-    return db
-
-
-def get_db(db_name):
-    """Place a handle to the database in the global variables."""
-    if not hasattr(g, 'client'):
-        g.client = {}
-
-    if not hasattr(g.client, db_name):
-        g.client[db_name] = connect_db(db_name)
-
-    return g.client[db_name]
-
-def last_run_number():
-    """determines the last run number by looking in the database"""
-    db = connect_db(run_info['db_name'])
-    return db['toc']['n_runs']
-
-if __name__ == '__main__':
-    run_info['last_run'] = last_run_number()
     socketio.run(app, host='0.0.0.0')

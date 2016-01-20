@@ -2,36 +2,43 @@
 <html>
 <head>
 <title>Online DAQometer</title>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+<script type="text/javascript"
+        src="https://www.google.com/jsapi?autoload={
+             'modules':[{
+             'name':'visualization',
+             'version':'1',
+             'packages':['corechart']
+             }]
+             }"></script>
 </head>	
     <script type="text/javascript" charset="utf-8">
-    $(document).ready(function(){
-	namespace = '/online';
-	var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
-	
-	socket.emit('refreshed');
+      $(document).ready(function(){
+	  namespace = '/online';
+	  var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+	  
+	  socket.emit('refreshed');
 
-        socket.on('connect', function() {
-            socket.emit('my event', {data: 'I\'m connected!'});
-        });
-	
-	$('#nEvents').text(0);
-	$('#rate').text(0);
-	socket.on('event info', function(msg) {
-	    $('#nEvents').text(String(msg.count));
-            $('#rate').text(String(msg.rate.toFixed(1)));
-	});
-	
-        socket.on('my response', function(msg) {
-            $('#log').append('<br>Received #' + msg.count + ': ' + msg.data);
-	});
+          socket.on('connect', function() {
+              socket.emit('my event', {data: 'I\'m connected!'});
+          });
+	  
+	  $('#nEvents').text(0);
+	  $('#rate').text(0);
+	  socket.on('event info', function(msg) {
+	      if(msg.runNumber){
+		  $('#nEvents').text(String(msg.count));
+		  $('#rate').text(String(msg.rate.toFixed(1)));
+		  $('#runNumber').text("Run "+ String(msg.runNumber));
+	      }
+	  });
+	  
+	  socket.on('refresh', function(msg) {
+	      location.replace("{{url_for('home')}}");
+	  });
 
-	socket.on('refresh', function(msg) {
-	    location.replace("{{url_for('home')}}");
-	});
-
-    });
+      });
     </script>
 <link rel=stylesheet type=text/css 
 href="{{ url_for('static', filename='style.css') }}">
@@ -43,10 +50,12 @@ href="{{ url_for('static', filename='favicon.ico') }}">
     <div align="left">
     <a href="{{ url_for('running_hist') }}">histogram</a>
     <a href="{{ url_for('traces') }}">traces</a>
+    <a href="{{ url_for('controls') }}">controls</a>
     <a href="{{ url_for('revision_select') }}">revise</a>
     <a href="{{ url_for('runlog') }}">runlog</a>
     </div>
     {% if in_progress %}
+    <big id = "runNumber"></big><br>
     <b id="nEvents"></b> events recorded<br>
      data rate: <b id="rate"></b> hz 
     {% else %}

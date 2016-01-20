@@ -1,30 +1,132 @@
 {% extends "layout.html" %}
 {% block body %}
-    <button id="generate">Generate Runlog</button> <b id="progress"></b>
-    <a id="runlog" style="display: none"
-		 href="{{url_for('get_upload', filename=path) }}">
-       <br><br>runlog.csv </a>
-    
-    <script type="text/javascript" charset="utf-8">
-       $(document).ready(function(){
-	   namespace = '/online';
-	   var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
-	   
-           socket.on('progress', function(msg) {
-	       $('#progress').text(msg);
-	   });
-      
-	   socket.on('runlog ready', function() {
-	       $('#runlog').show();
-	   });
-       });
+  <style> 
+    table {
+    border-collapse: collapse;
+    border: 2px black solid;
+    font: 12px sans-serif;
+    }
+    td {
+    border: 1px black solid;
+    padding: 5px;
+    }
+  </style>
+  <br>
+  <div id="n_rows_selection">
+    <b> last <input id="n_rows" size="3" value="10"></input>  runs </b> 
+  </div>
+  <b id="generating"></b>
+  <br><b><font color="red" id="error" style="display: none">Invalid entry!</font></b>
+  <br>
+  <table id="runlog_table" style="display: none">
+    <tbody>	
+    <tr><td></td></tr>
+    </tbody>
+  </table>
+  <b id="output_test"></b>
+  <br>
+  <button id="generate">Prepare Full Runlog as CSV</button> 
+  <a id="runlog" style="display: none"
+     href="{{url_for('get_upload', filename=path) }}">
+    runlog.csv 
+  </a>
+  <br><b id="progress"></b>
 
-      $('#generate').click(function() {
-      	  namespace = '/online';
-	  var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
-	  socket.emit('generate runlog');
-      });
-    </script>
+  <script type="text/javascript" charset="utf-8">
+
+    $(document).ready(function(){
+	namespace = '/online';
+	var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+	
+	socket.emit('runlog data', {'n_rows' : $('#n_rows').val()});
+
+        socket.on('progress', function(msg) {
+	    $('#progress').text(msg);
+	});
+	
+	socket.on('runlog ready', function() {
+	    $('#runlog').show();
+	});
+
+	socket.on('bad row value', function() {
+	    $('#error').show();
+	});
+	
+	socket.on('rows: ', function(rows) {
+	    var nRows = rows.length;	 
+	    if( ! $('#runlog_table').is(":visible")){
+		$('#runlog_table').show();
+	    }
+	    $('#runlog_table').find('tbody:last').empty();
+	    if(nRows > 100){
+		$('#n_rows_selection').hide();
+		$('#generating').text("building runlog...");
+	    }
+
+	    var row = 0;	    
+	    var interval = setInterval(function(){
+		var endRow = row + 100;
+		for(; row < endRow; ++row){
+		    if(row === nRows){
+			break;
+		    }
+		    $('#runlog_table').find('tbody:last').append('<tr>');
+		    for(i in rows[row]){
+			if(i == 0 && row != 0){
+			    var url = '/revise/' + rows[row][i];
+			    var entry = '<td><a href=' + url + '>' +
+				+ rows[row][i] + '</a></td>';
+			    $('#runlog_table').find('tbody:last').append(entry);
+			}
+			else{
+			    $('#runlog_table').find('tbody:last').append('<td>'+rows[row][i]+'</td>');
+			}
+		    }
+		    $('#runlog_table').find('tbody:last').append('</tr>');		    
+		}
+		
+		if(row >= nRows){
+		    clearInterval(interval);
+		    $('#n_rows_selection').show();
+		    $('#generating').text("");
+		}
+	    }, 10);	    
+	});
+
+	$('#generate').click(function() {
+	    socket.emit('generate runlog');
+	});
+
+	$('#n_rows').keydown(function (e){
+	    if(e.keyCode == 13){
+		$('#error').hide();
+		socket.emit("runlog data",  {'n_rows' : $('#n_rows').val()});
+	    }	   
+	});
+
+	$('#newSetting').keydown(function (e){
+	    if(e.keyCode == 13){
+		socket.emit("new filter wheel setting", {"new_setting" : $('#newSetting').val() } );
+	    }	   
+	});
+
+	$('#bk_power_button').click(function() {
+	    socket.emit("toggle bk power");
+	});
+
+	$('#remeasure').click(function() {
+	    socket.emit("bk status")
+	});
+
+	$('#new_set_pt').keydown(function (e){
+	    if(e.keyCode == 13){
+		$('#new_set_pt').val('');
+	    }	   
+	});
+	
+    });
+
+  </script>
+  {% endblock body %}
     
     
-{% endblock body %}

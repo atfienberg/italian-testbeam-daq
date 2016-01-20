@@ -5,6 +5,7 @@ killall daqometer
 
 sleep 1
 
+DAQDIR='/home/newg2/Applications/lab-daq'
 olddir=`pwd`
 cd $DAQDIR/fast
 ./bin/fe_master &> data/log &
