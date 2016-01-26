@@ -33,47 +33,44 @@ using namespace daq;
 
 // Anonymous namespace for "global" parameters
 namespace {
-  
-  // simple declarations
-  bool is_running = false;
-  bool rc = 0;
 
-  // std declarations
-  string msg_string;
-  string conf_file;
-  string tmp_conf_file(tmpnam(nullptr));
+// simple declarations
+bool is_running = false;
+bool rc = 0;
 
-  // project declarations
-  WorkerList workers;
-  vector<WriterBase *> writers;
-  EventBuilder *event_builder = nullptr;
+// std declarations
+string msg_string;
+string conf_file;
+string tmp_conf_file(tmpnam(nullptr));
+
+// project declarations
+WorkerList workers;
+vector<WriterBase *> writers;
+EventBuilder *event_builder = nullptr;
 }
 
 // Function declarations
-int LoadConfig(); // just the file
-int SetupConfig(); // all the workers and writers
-int FreeConfig(); // free all the workers and writers
+int LoadConfig();   // just the file
+int SetupConfig();  // all the workers and writers
+int FreeConfig();   // free all the workers and writers
 int StartRun();
 int StopRun();
 void HandshakeLoop();
 
 // The main loop
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   // If there was a command line argument, grab that file.
   if (argc > 1) {
-
     conf_file = string(argv[1]);
 
   } else {
-
     // Set default config file location.
     conf_file = conf_dir + string(".default_master.json");
   }
 
   // Load the configuration
   LoadConfig();
-  
+
   ptree conf;
   read_json(tmp_conf_file, conf);
 
@@ -83,12 +80,11 @@ int main(int argc, char *argv[])
 
   // Launch the thread that confirms a running frontend.
   std::thread handshake_thread(HandshakeLoop);
-  
+
   zmq::message_t msg;
   int count = 0;
 
   while (true) {
-
     // Check for a message.
     count = 0;
     do {
@@ -99,37 +95,34 @@ int main(int argc, char *argv[])
     } while (!rc && (count < 100));
 
     if (rc == true) {
-
       // Process the message.
       std::istringstream ss(static_cast<char *>(msg.data()));
       std::getline(ss, msg_string, ':');
 
       if (msg_string == string("START") && !is_running) {
+        // Reload the external config.
+        LoadConfig();
 
-	// Reload the external config.
-	LoadConfig();
+        // Change the run number.
+        string file_name("data/labrun_");
+        std::getline(ss, msg_string, ':');
+        file_name.append(msg_string);
+        file_name.append(".root");
 
-	// Change the run number.
-	string file_name("data/labrun_");
-	std::getline(ss, msg_string, ':');
-	file_name.append(msg_string);
-	file_name.append(".root");
+        // Save the internal config.
+        ptree conf;
+        read_json(tmp_conf_file, conf);
+        conf.put("writers.root.file", file_name);
+        write_json(tmp_conf_file, conf);
 
-	// Save the internal config.
-	ptree conf;
-	read_json(tmp_conf_file, conf);
-	conf.put("writers.root.file", file_name);
-	write_json(tmp_conf_file, conf);
-
-	// Setup the config and run.
-	SetupConfig();
+        // Setup the config and run.
+        SetupConfig();
 
         StartRun();
 
       } else if (msg_string == string("STOP") && is_running) {
-
         StopRun();
-	FreeConfig();
+        FreeConfig();
       }
     }
 
@@ -139,8 +132,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 
-int LoadConfig() 
-{
+int LoadConfig() {
   // Load up the configuration file to refresh the internal one.
 
   ptree conf;
@@ -150,38 +142,31 @@ int LoadConfig()
   return 0;
 }
 
-
-int SetupConfig()
-{
+int SetupConfig() {
   // Load the internal config file.
   ptree conf;
   read_json(tmp_conf_file, conf);
 
   // Get the fake data writers (for testing).
-  BOOST_FOREACH(const ptree::value_type &v, conf.get_child("devices.fake")) {
-    
+  /*BOOST_FOREACH (const ptree::value_type &v, conf.get_child("devices.fake")) {
     string name(v.first);
     string dev_conf_file(v.second.data());
 
     workers.PushBack(new WorkerFake(name, conf_dir + dev_conf_file));
-  } 
-  
+  }*/
 
   // Set up the sis3350 devices.
-  BOOST_FOREACH(const ptree::value_type &v, 
-		conf.get_child("devices.sis_3350")) {
-
+  BOOST_FOREACH (const ptree::value_type &v,
+                 conf.get_child("devices.sis_3350")) {
     string name(v.first);
     string dev_conf_file(v.second.data());
-    
-    workers.PushBack(new WorkerSis3350(name, conf_dir + dev_conf_file));
 
-  }  
+    workers.PushBack(new WorkerSis3350(name, conf_dir + dev_conf_file));
+  }
 
   // Set up the sis3302 devices.
-  BOOST_FOREACH(const ptree::value_type &v, 
-                conf.get_child("devices.sis_3302")) {
-
+  BOOST_FOREACH (const ptree::value_type &v,
+                 conf.get_child("devices.sis_3302")) {
     string name(v.first);
     string dev_conf_file(v.second.data());
 
@@ -189,9 +174,8 @@ int SetupConfig()
   }
 
   // Set up the caen1785 devices.
-  BOOST_FOREACH(const ptree::value_type &v, 
-                conf.get_child("devices.caen_1785")) {
-
+  BOOST_FOREACH (const ptree::value_type &v,
+                 conf.get_child("devices.caen_1785")) {
     string name(v.first);
     string dev_conf_file(v.second.data());
 
@@ -200,9 +184,8 @@ int SetupConfig()
 
   // Set up the caen6742 devices.
   std::vector<WorkerCaen6742 *> caen_vec;
-  BOOST_FOREACH(const ptree::value_type &v, 
-                conf.get_child("devices.caen_6742")) {
-
+  BOOST_FOREACH (const ptree::value_type &v,
+                 conf.get_child("devices.caen_6742")) {
     string name(v.first);
     string dev_conf_file(v.second.data());
 
@@ -223,9 +206,8 @@ int SetupConfig()
   }
 
   // Set up the caen1742 devices.
-  BOOST_FOREACH(const ptree::value_type &v, 
-                conf.get_child("devices.caen_1742")) {
-
+  BOOST_FOREACH (const ptree::value_type &v,
+                 conf.get_child("devices.caen_1742")) {
     string name(v.first);
     string dev_conf_file(v.second.data());
 
@@ -233,9 +215,7 @@ int SetupConfig()
   }
 
   // Set up the DRS4 devices.
-  BOOST_FOREACH(const ptree::value_type &v, 
-                conf.get_child("devices.drs4")) {
-
+  BOOST_FOREACH (const ptree::value_type &v, conf.get_child("devices.drs4")) {
     string name(v.first);
     string dev_conf_file(v.second.data());
 
@@ -243,21 +223,16 @@ int SetupConfig()
   }
 
   // Set up the writers.
-  BOOST_FOREACH(const ptree::value_type &v,
-                conf.get_child("writers")) {
- 
+  BOOST_FOREACH (const ptree::value_type &v, conf.get_child("writers")) {
     if (string(v.first) == string("root") && v.second.get<bool>("in_use")) {
-   
       writers.push_back(new WriterRoot(tmp_conf_file));
-   
-    } else if (string(v.first) == string("online") 
-	       && v.second.get<bool>("in_use")) {
-   
+
+    } else if (string(v.first) == string("online") &&
+               v.second.get<bool>("in_use")) {
       writers.push_back(new WriterOnline(tmp_conf_file));
-   
-    } else if (string(v.first) == string("midas")
-	       && v.second.get<bool>("in_use")) {
-      
+
+    } else if (string(v.first) == string("midas") &&
+               v.second.get<bool>("in_use")) {
       writers.push_back(new WriterMidas(tmp_conf_file));
     }
   }
@@ -268,8 +243,7 @@ int SetupConfig()
   return 0;
 }
 
-int FreeConfig() 
-{
+int FreeConfig() {
   delete event_builder;
 
   // Delete the allocated workers.
@@ -309,7 +283,8 @@ int StopRun() {
   // Stop the event builder
   event_builder->StopBuilder();
 
-  while (!event_builder->FinishedRun());
+  while (!event_builder->FinishedRun())
+    ;
 
   // Stop the writers
   for (auto it = writers.begin(); it != writers.end(); ++it) {
@@ -322,8 +297,7 @@ int StopRun() {
   return 0;
 }
 
-void HandshakeLoop()
-{
+void HandshakeLoop() {
   ptree conf;
   read_json(tmp_conf_file, conf);
 
@@ -334,25 +308,21 @@ void HandshakeLoop()
   zmq::message_t msg;
   string msg_string;
   bool rc = false;
-  
-  while (true) {
 
+  while (true) {
     try {
       rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
 
     } catch (zmq::error_t e) {
-
       continue;
     }
-  
-    if (rc == true) {
 
+    if (rc == true) {
       usleep(long_sleep);
 
       do {
-	rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
+        rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
       } while (rc == false);
-
     }
   }
 

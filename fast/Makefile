@@ -39,8 +39,10 @@ LIBS = $(shell root-config --libs)
 WXLIBS  = $(shell wx-config --libs)
 WXFLAGS = $(shell wx-config --cxxflags)
 
-FLAGS += -Icore/include -Icore/include/drs 
-LIBS += -Lcore/lib -lfid -lm -lzmq -ljson_spirit -lCAENDigitizer -lusb-1.0 -lutil -lpthread
+FLAGS += -Icore/include -Icore/include/drs -Icore/json11
+LIBS += -Lcore/lib -lfid -lm -lzmq -lCAENDigitizer -lusb-1.0 -lutil -lpthread
+
+COREOBJ += core/build/json11.o
 
 all: $(COREOBJ) $(DEPSOBJ) $(TARGETS)
 
