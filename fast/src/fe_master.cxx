@@ -26,7 +26,6 @@ using namespace boost::property_tree;
 #include "writer_root.hh"
 #include "writer_midas.hh"
 #include "event_builder.hh"
-#include "worker_fake.hh"
 #include "common.hh"
 
 using namespace daq;
@@ -215,12 +214,12 @@ int SetupConfig() {
   }
 
   // Set up the DRS4 devices.
-  BOOST_FOREACH (const ptree::value_type &v, conf.get_child("devices.drs4")) {
-    string name(v.first);
-    string dev_conf_file(v.second.data());
+  // BOOST_FOREACH (const ptree::value_type &v, conf.get_child("devices.drs4")) {
+  //   string name(v.first);
+  //   string dev_conf_file(v.second.data());
 
-    workers.PushBack(new WorkerDrs4(name, conf_dir + dev_conf_file));
-  }
+  //   workers.PushBack(new WorkerDrs4(name, conf_dir + dev_conf_file));
+  // }
 
   // Set up the writers.
   BOOST_FOREACH (const ptree::value_type &v, conf.get_child("writers")) {
