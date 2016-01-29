@@ -1,62 +1,48 @@
 {
-    "trigger_port":"tcp://127.0.0.1:42040",
-    "handshake_port":"tcp://127.0.0.1:42041",
-    "batch_size":1,
-    "max_event_time":1200,
+  "trigger_port": "tcp://127.0.0.1:42040",
+  "handshake_port": "tcp://127.0.0.1:42041",
+  "batch_size": 1,
+  "max_event_time": 1200,
 
-    "devices":
-    {
-        "fake": {
-	},
+  "devices": {
+    "fake": {},
+    "sis_3316": {},
+    "sis_3350": {},
+    "sis_3302": {},
+    "caen_1785": {},
+    "caen_6742": {},
 
-	"sis_3316": {	 
-        },	
-
-        "sis_3350": {
-        },
-
-        "sis_3302": {
-        },
-
-        "caen_1785": {
-	},
-
-        "caen_6742": {
-	},
-	
-        "caen_1742": {
-	    "caen_0": "caen_1742_0.json"   
-	},
-
-	"drs4": {
-	}
+    "caen_1742": {
+      "caen_0": "caen_1742_0.json"
     },
 
-    "writers": {
+    "drs4": {}
+  },
 
-        "root": {
-	    "in_use":true,
-            "file":"data/run_00247.root",
-            "tree":"t",
-	    "sync":false
-        },
-     
-        "online": {
-	    "in_use":true,
-            "port":"tcp://127.0.0.1:42043",
-	    "high_water_mark":10,
-	    "max_trace_length":1024
-        },
-	
-	"midas": {
-	    "in_use":false,
-	    "port":"tcp://127.0.0.1:42044",
-	    "high_water_mark":10
-	}
+  "writers": {
+    "root": {
+      "in_use": true,
+      "file": "data/run_00247.root",
+      "tree": "t",
+      "sync": false
     },
 
-    "trigger_control": {
-        "live_time":"10000000",
-        "dead_time":"1"
+    "online": {
+      "in_use": true,
+      "port": "tcp://127.0.0.1:42043",
+      "high_water_mark": 10,
+      "max_trace_length": 1024
+    },
+
+    "midas": {
+      "in_use": false,
+      "port": "tcp://127.0.0.1:42044",
+      "high_water_mark": 10
     }
+  },
+  
+  "trigger_control": {
+    "live_time": "10000000",
+    "dead_time": "1"
+  }
 }

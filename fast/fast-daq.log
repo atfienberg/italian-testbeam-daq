@@ -1,0 +1,1226 @@
+[2016-01-28 18:10:06.007589] **ERROR** { caen_0          } : could not find device
+[2016-01-28 12:33:59.176781] **ERROR** { caen_0          } : failed to read high byte of serial number
+[2016-01-28 12:33:59.176908] **ERROR** { caen_0          } : failed to read lower byte of serial number
+[2016-01-28 12:33:59.177032] **ERROR** { caen_0          } : failed to read hardware revision byte 0
+[2016-01-28 12:33:59.177157] **ERROR** { caen_0          } : failed to read hardware revision byte 1
+[2016-01-28 12:33:59.177281] **ERROR** { caen_0          } : failed to read hardware revision byte 2
+[2016-01-28 12:33:59.177405] **ERROR** { caen_0          } : failed to read hardware revision byte 3
+[2016-01-28 12:33:59.177528] **ERROR** { caen_0          } : failed to read status of DRS4 chip 0
+[2016-01-28 12:33:59.177655] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 0
+[2016-01-28 12:33:59.177796] **ERROR** { caen_0          } : failed to read status of DRS4 chip 1
+[2016-01-28 12:33:59.177930] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 1
+[2016-01-28 12:33:59.178060] **ERROR** { caen_0          } : failed to read status of DRS4 chip 2
+[2016-01-28 12:33:59.178190] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 2
+[2016-01-28 12:33:59.178314] **ERROR** { caen_0          } : failed to read status of DRS4 chip 3
+[2016-01-28 12:33:59.178438] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 3
+[2016-01-28 12:33:59.178562] **ERROR** { caen_0          } : write32 failure at address 0xd000ef24
+[2016-01-28 12:33:59.178632] **ERROR** { caen_0          } : failure attempt device reset
+[2016-01-28 12:33:59.478841] **ERROR** { caen_0          } : failed to check device status
+[2016-01-28 12:33:59.478984] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 12:33:59.479109] **ERROR** { caen_0          } : write32 failure at address 0xd0008120
+[2016-01-28 12:33:59.479179] **ERROR** { caen_0          } : failed to set group enable mask to 0xf
+[2016-01-28 12:33:59.479302] **ERROR** { caen_0          } : write32 failure at address 0xd0008004
+[2016-01-28 12:33:59.479371] **ERROR** { caen_0          } : failed to enable digitization of triggers
+[2016-01-28 12:33:59.479494] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 12:33:59.479617] **ERROR** { caen_0          } : failed to read device configuration
+[2016-01-28 12:33:59.479740] **ERROR** { caen_0          } : write32 failure at address 0xd0008020
+[2016-01-28 12:33:59.479808] **ERROR** { caen_0          } : failed to write device configuration for trace length
+[2016-01-28 12:33:59.479960] **ERROR** { caen_0          } : write32 failure at address 0xd00080d8
+[2016-01-28 12:33:59.480030] **ERROR** { caen_0          } : failed to write the sampling rate
+[2016-01-28 12:33:59.480153] **ERROR** { caen_0          } : failed to read the pre-trigger buffer register
+[2016-01-28 12:33:59.480283] **ERROR** { caen_0          } : write32 failure at address 0xd0008114
+[2016-01-28 12:33:59.480352] **ERROR** { caen_0          } : failed to set the pre-trigger buffer
+[2016-01-28 12:33:59.480492] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.480617] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.480686] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.480812] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.480935] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.481003] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.481128] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.481252] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.481321] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.481447] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.481576] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.481646] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.481771] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.481895] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.481963] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.482088] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.482211] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.482279] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.482404] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.482528] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.482596] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.482721] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.482845] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 12:33:59.482913] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.483038] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.483161] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.483229] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.483354] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.483478] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.483546] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.483671] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.483794] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.483863] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.483988] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.484111] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.484180] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.484305] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.484428] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.484496] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.484621] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.484744] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.484813] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.484938] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.485061] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.485129] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.485255] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.485378] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 12:33:59.485447] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.485572] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.485695] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.485763] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.485889] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.486015] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.486084] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.486210] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.486333] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.486401] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.486526] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.486650] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.486718] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.486843] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.486966] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.487035] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.487160] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.487283] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.487351] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.487476] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.487599] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.487667] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.487793] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.487916] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 12:33:59.487984] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.488109] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.488232] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.488301] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.488426] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.488549] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.488618] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.488742] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.488866] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.488934] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.489059] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.489182] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.489250] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.489376] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.489499] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.489568] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.489693] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.489816] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.489884] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.490010] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.490133] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.490201] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.490326] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 12:33:59.490453] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 12:33:59.490522] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 12:33:59.490648] **ERROR** { caen_0          } : failed to read trigger register
+[2016-01-28 12:33:59.490771] **ERROR** { caen_0          } : write32 failure at address 0xd000810c
+[2016-01-28 12:33:59.490839] **ERROR** { caen_0          } : failed to enable external/software triggers
+[2016-01-28 12:33:59.490962] **ERROR** { caen_0          } : failed to read BLT Event Number register
+[2016-01-28 12:33:59.491085] **ERROR** { caen_0          } : write32 failure at address 0xd000ef1c
+[2016-01-28 12:33:59.491153] **ERROR** { caen_0          } : failed to set BLT Event Number to 1
+[2016-01-28 12:33:59.491276] **ERROR** { caen_0          } : failed to read VME control register
+[2016-01-28 12:33:59.491399] **ERROR** { caen_0          } : write32 failure at address 0xd000ef00
+[2016-01-28 12:33:59.491467] **ERROR** { caen_0          } : failed to enable BERR in VME control register
+[2016-01-28 12:33:59.491590] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.491864] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.492138] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.492412] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.492686] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.492960] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.493234] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.493509] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.493783] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.494057] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.494331] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.494604] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.494881] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.495155] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.495430] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.495704] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.495978] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.496253] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.496527] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.496802] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.497076] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.497351] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.497625] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.497900] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.498174] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.498448] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.498723] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.498997] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.499271] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.499546] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.499824] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.500098] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.500373] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.500647] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.500922] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.501197] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.501471] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.501746] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.502021] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.502295] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.502569] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.502844] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.503119] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.503393] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.503668] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.503942] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.504216] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.504491] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.504766] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.505040] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.505315] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.505590] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.505864] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.506138] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.506413] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.506687] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.506961] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.507236] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.507511] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.507785] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.508059] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.508334] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.508608] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.508883] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.509157] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.509432] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.509707] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.509981] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.510256] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.510530] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.510805] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.511080] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.511357] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.511632] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.511906] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.512181] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.512455] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.512730] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.513004] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.513279] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.513554] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.513828] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.514103] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.514377] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.514651] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.514926] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.515200] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.515475] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.515749] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.516024] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.516298] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.516572] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.516847] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.517121] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.517396] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.517671] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.517945] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.518220] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.518494] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.518769] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.519043] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 12:33:59.519317] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 12:33:59.519454] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 12:33:59.519542] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 12:33:59.520742] **ERROR** { caen_0          } : write32 failure at address 0xd000ef28
+[2016-01-28 12:33:59.520820] **ERROR** { caen_0          } : failed to clear data
+[2016-01-28 12:34:04.508177] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 12:34:04.508318] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 12:34:04.508390] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:05:25.194645] **ERROR** { caen_0          } : failed to read high byte of serial number
+[2016-01-28 18:05:25.205321] **ERROR** { caen_0          } : failed to read lower byte of serial number
+[2016-01-28 18:05:25.216007] **ERROR** { caen_0          } : failed to read hardware revision byte 0
+[2016-01-28 18:05:25.226672] **ERROR** { caen_0          } : failed to read hardware revision byte 1
+[2016-01-28 18:05:25.237304] **ERROR** { caen_0          } : failed to read hardware revision byte 2
+[2016-01-28 18:05:25.247996] **ERROR** { caen_0          } : failed to read hardware revision byte 3
+[2016-01-28 18:05:25.258629] **ERROR** { caen_0          } : failed to read status of DRS4 chip 0
+[2016-01-28 18:05:25.271928] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 0
+[2016-01-28 18:05:25.283597] **ERROR** { caen_0          } : failed to read status of DRS4 chip 1
+[2016-01-28 18:05:25.294334] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 1
+[2016-01-28 18:05:25.307024] **ERROR** { caen_0          } : failed to read status of DRS4 chip 2
+[2016-01-28 18:05:25.319327] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 2
+[2016-01-28 18:05:25.329965] **ERROR** { caen_0          } : failed to read status of DRS4 chip 3
+[2016-01-28 18:05:25.340622] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 3
+[2016-01-28 18:05:25.351250] **ERROR** { caen_0          } : write32 failure at address 0xd000ef24
+[2016-01-28 18:05:25.351324] **ERROR** { caen_0          } : failure attempt device reset
+[2016-01-28 18:05:25.662046] **ERROR** { caen_0          } : failed to check device status
+[2016-01-28 18:05:25.672709] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:05:25.683355] **ERROR** { caen_0          } : write32 failure at address 0xd0008120
+[2016-01-28 18:05:25.683441] **ERROR** { caen_0          } : failed to set group enable mask to 0xf
+[2016-01-28 18:05:25.694118] **ERROR** { caen_0          } : write32 failure at address 0xd0008004
+[2016-01-28 18:05:25.694198] **ERROR** { caen_0          } : failed to enable digitization of triggers
+[2016-01-28 18:05:25.704847] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:05:25.715480] **ERROR** { caen_0          } : failed to read device configuration
+[2016-01-28 18:05:25.726128] **ERROR** { caen_0          } : write32 failure at address 0xd0008020
+[2016-01-28 18:05:25.726201] **ERROR** { caen_0          } : failed to write device configuration for trace length
+[2016-01-28 18:05:25.736846] **ERROR** { caen_0          } : write32 failure at address 0xd00080d8
+[2016-01-28 18:05:25.736918] **ERROR** { caen_0          } : failed to write the sampling rate
+[2016-01-28 18:05:25.747587] **ERROR** { caen_0          } : failed to read the pre-trigger buffer register
+[2016-01-28 18:05:25.758346] **ERROR** { caen_0          } : write32 failure at address 0xd0008114
+[2016-01-28 18:05:25.758433] **ERROR** { caen_0          } : failed to set the pre-trigger buffer
+[2016-01-28 18:05:25.769106] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.779787] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.779868] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.790592] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.801351] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.801486] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.812701] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.823393] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.823469] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.834097] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.844734] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.844821] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.855474] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.866682] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.866792] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.877772] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.888643] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.888735] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.899502] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.910205] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.910281] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.920975] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.931716] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:05:25.931798] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.942448] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.953658] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:25.953746] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.969319] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:25.979991] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:25.980139] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:25.990804] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.001441] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:26.001568] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.012255] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.022906] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:26.022980] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.033621] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.044251] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:26.044327] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.055569] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.066437] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:26.066563] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.077532] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.088185] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:26.088267] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.098935] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.110129] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:05:26.110223] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.120971] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.131646] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.131745] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.142448] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.153316] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.153421] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.164139] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.174866] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.174946] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.185770] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.196442] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.196608] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.208535] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.225222] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.225324] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.236302] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.246953] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.247029] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.257683] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.268340] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.268424] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.279058] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.289828] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:05:26.289917] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.300556] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.311309] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.311506] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.322331] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.333838] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.333939] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.345277] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.355967] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.356377] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.367434] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.378479] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.378570] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.389206] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.399844] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.399930] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.410587] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.421221] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.421308] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.432275] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.443025] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.443116] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.453788] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:05:26.464564] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:05:26.464654] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:05:26.475301] **ERROR** { caen_0          } : failed to read trigger register
+[2016-01-28 18:05:26.485934] **ERROR** { caen_0          } : write32 failure at address 0xd000810c
+[2016-01-28 18:05:26.486015] **ERROR** { caen_0          } : failed to enable external/software triggers
+[2016-01-28 18:05:26.496692] **ERROR** { caen_0          } : failed to read BLT Event Number register
+[2016-01-28 18:05:26.507399] **ERROR** { caen_0          } : write32 failure at address 0xd000ef1c
+[2016-01-28 18:05:26.507482] **ERROR** { caen_0          } : failed to set BLT Event Number to 1
+[2016-01-28 18:05:26.518145] **ERROR** { caen_0          } : failed to read VME control register
+[2016-01-28 18:05:26.528805] **ERROR** { caen_0          } : write32 failure at address 0xd000ef00
+[2016-01-28 18:05:26.528885] **ERROR** { caen_0          } : failed to enable BERR in VME control register
+[2016-01-28 18:05:26.539530] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.550584] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.561484] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.572286] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.583102] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.594449] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.605288] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.616092] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.626896] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.637701] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.648538] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.659334] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.670137] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.680924] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.691711] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.702502] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.713285] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.724064] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.734832] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.745613] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.756452] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.767261] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.778051] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.788844] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.799633] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.810481] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.821297] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.832094] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.842907] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.853705] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.864570] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.875386] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.886240] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.897040] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.907835] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.918641] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.929436] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.940215] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.950986] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.961769] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.972547] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.983332] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:26.994138] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.004935] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.015808] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.026620] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.037417] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.048205] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.059001] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.069770] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.080555] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.091349] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.102124] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.112916] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.123705] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.134493] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.145292] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.156101] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.166910] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.177703] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.188687] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.199485] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.210268] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.221036] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.231813] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.242591] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.253359] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.264136] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.274915] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.285682] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.296460] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.307238] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.318006] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.328782] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.339559] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.350336] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.361112] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.371886] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.382685] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.394366] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.405174] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.415950] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.426766] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.437591] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.448467] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.459297] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.470092] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.480915] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.491727] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.502507] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.513315] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.524115] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.534906] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.545706] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.556491] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.567285] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.578087] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.588884] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.599705] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.610518] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.621318] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:05:27.632120] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:05:27.642791] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:05:27.642867] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:05:27.654577] **ERROR** { caen_0          } : write32 failure at address 0xd000ef28
+[2016-01-28 18:05:27.654666] **ERROR** { caen_0          } : failed to clear data
+[2016-01-28 18:05:52.114948] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:05:52.125590] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:05:52.125665] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:06:48.403861] **ERROR** { caen_0          } : failed to read high byte of serial number
+[2016-01-28 18:06:48.403997] **ERROR** { caen_0          } : failed to read lower byte of serial number
+[2016-01-28 18:06:48.404139] **ERROR** { caen_0          } : failed to read hardware revision byte 0
+[2016-01-28 18:06:48.404274] **ERROR** { caen_0          } : failed to read hardware revision byte 1
+[2016-01-28 18:06:48.404409] **ERROR** { caen_0          } : failed to read hardware revision byte 2
+[2016-01-28 18:06:48.404626] **ERROR** { caen_0          } : failed to read hardware revision byte 3
+[2016-01-28 18:06:48.404756] **ERROR** { caen_0          } : failed to read status of DRS4 chip 0
+[2016-01-28 18:06:48.404888] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 0
+[2016-01-28 18:06:48.405026] **ERROR** { caen_0          } : failed to read status of DRS4 chip 1
+[2016-01-28 18:06:48.405168] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 1
+[2016-01-28 18:06:48.405299] **ERROR** { caen_0          } : failed to read status of DRS4 chip 2
+[2016-01-28 18:06:48.405426] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 2
+[2016-01-28 18:06:48.405552] **ERROR** { caen_0          } : failed to read status of DRS4 chip 3
+[2016-01-28 18:06:48.405677] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 3
+[2016-01-28 18:06:48.405809] **ERROR** { caen_0          } : write32 failure at address 0xd000ef24
+[2016-01-28 18:06:48.405886] **ERROR** { caen_0          } : failure attempt device reset
+[2016-01-28 18:06:48.706099] **ERROR** { caen_0          } : failed to check device status
+[2016-01-28 18:06:48.706243] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:06:48.706368] **ERROR** { caen_0          } : write32 failure at address 0xd0008120
+[2016-01-28 18:06:48.706438] **ERROR** { caen_0          } : failed to set group enable mask to 0xf
+[2016-01-28 18:06:48.706561] **ERROR** { caen_0          } : write32 failure at address 0xd0008004
+[2016-01-28 18:06:48.706629] **ERROR** { caen_0          } : failed to enable digitization of triggers
+[2016-01-28 18:06:48.706752] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:06:48.706875] **ERROR** { caen_0          } : failed to read device configuration
+[2016-01-28 18:06:48.706997] **ERROR** { caen_0          } : write32 failure at address 0xd0008020
+[2016-01-28 18:06:48.707065] **ERROR** { caen_0          } : failed to write device configuration for trace length
+[2016-01-28 18:06:48.707216] **ERROR** { caen_0          } : write32 failure at address 0xd00080d8
+[2016-01-28 18:06:48.707287] **ERROR** { caen_0          } : failed to write the sampling rate
+[2016-01-28 18:06:48.707409] **ERROR** { caen_0          } : failed to read the pre-trigger buffer register
+[2016-01-28 18:06:48.707538] **ERROR** { caen_0          } : write32 failure at address 0xd0008114
+[2016-01-28 18:06:48.707607] **ERROR** { caen_0          } : failed to set the pre-trigger buffer
+[2016-01-28 18:06:48.707746] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.707871] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.707939] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.708064] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.708187] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.708256] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.708382] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.708504] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.708572] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.708697] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.708820] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.708889] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.709013] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.709136] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.709204] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.709290] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.709416] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.709484] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.709609] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.709732] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.709807] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.709934] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.710057] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:06:48.710125] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.710250] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.710372] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.710440] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.710565] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.710688] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.710756] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.710880] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.711003] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.711071] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.711196] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.711319] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.711387] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.711512] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.711634] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.711703] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.711827] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.711950] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.712018] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.712143] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.712266] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.712334] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.712458] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.712581] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:06:48.712649] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.712774] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.712897] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.712965] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.713089] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.713212] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.713290] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.713417] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.713541] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.713609] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.713734] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.713857] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.713925] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.714050] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.714174] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.714246] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.714372] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.714495] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.714563] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.714688] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.714812] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.714880] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.715005] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.715128] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:06:48.715196] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.715321] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.715444] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.715513] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.715637] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.715760] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.715829] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.715954] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.716077] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.716145] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.716270] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.716393] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.716461] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.716586] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.716709] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.716777] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.716902] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.717025] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.717093] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.717218] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.717342] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.717411] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.717535] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:06:48.717658] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:06:48.717726] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:06:48.717853] **ERROR** { caen_0          } : failed to read trigger register
+[2016-01-28 18:06:48.717976] **ERROR** { caen_0          } : write32 failure at address 0xd000810c
+[2016-01-28 18:06:48.718044] **ERROR** { caen_0          } : failed to enable external/software triggers
+[2016-01-28 18:06:48.718167] **ERROR** { caen_0          } : failed to read BLT Event Number register
+[2016-01-28 18:06:48.718290] **ERROR** { caen_0          } : write32 failure at address 0xd000ef1c
+[2016-01-28 18:06:48.718358] **ERROR** { caen_0          } : failed to set BLT Event Number to 1
+[2016-01-28 18:06:48.718481] **ERROR** { caen_0          } : failed to read VME control register
+[2016-01-28 18:06:48.718603] **ERROR** { caen_0          } : write32 failure at address 0xd000ef00
+[2016-01-28 18:06:48.718675] **ERROR** { caen_0          } : failed to enable BERR in VME control register
+[2016-01-28 18:06:48.718798] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.719074] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.719380] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.719667] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.719943] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.720218] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.720494] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.720771] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.721049] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.721324] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.721600] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.721875] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.722149] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.722424] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.722699] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.722974] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.723248] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.723523] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.723798] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.724072] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.724347] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.724622] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.724897] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.725172] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.725447] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.725723] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.725998] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.726276] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.726555] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.726830] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.727105] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.727380] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.727655] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.727929] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.728204] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.728480] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.728754] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.729029] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.729304] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.729580] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.729859] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.730135] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.730409] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.730684] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.730958] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.731234] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.731508] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.731783] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.732058] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.732332] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.732607] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.732881] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.733156] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.733431] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.733706] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.733981] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.734256] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.734531] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.734805] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.735080] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.735355] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.735629] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.735904] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.736180] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.736456] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.736732] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.737006] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.737281] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.737557] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.737831] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.738106] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.738380] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.738655] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.738930] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.739205] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.739479] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.739754] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.740029] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.740304] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.740578] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.740853] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.741128] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.741406] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.741682] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.741957] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.742232] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.742507] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.742781] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.743056] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.743331] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.743605] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.743880] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.744155] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.744429] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.744704] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.744978] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.745253] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.745527] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.745801] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.746075] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.746348] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:06:48.746622] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:06:48.746745] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:06:48.746814] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:06:48.747987] **ERROR** { caen_0          } : write32 failure at address 0xd000ef28
+[2016-01-28 18:06:48.748055] **ERROR** { caen_0          } : failed to clear data
+[2016-01-28 18:07:22.385186] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:07:22.385339] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:07:22.385419] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:08:42.677943] **ERROR** { caen_0          } : failed to read high byte of serial number
+[2016-01-28 18:08:42.678073] **ERROR** { caen_0          } : failed to read lower byte of serial number
+[2016-01-28 18:08:42.678198] **ERROR** { caen_0          } : failed to read hardware revision byte 0
+[2016-01-28 18:08:42.678325] **ERROR** { caen_0          } : failed to read hardware revision byte 1
+[2016-01-28 18:08:42.678451] **ERROR** { caen_0          } : failed to read hardware revision byte 2
+[2016-01-28 18:08:42.678575] **ERROR** { caen_0          } : failed to read hardware revision byte 3
+[2016-01-28 18:08:42.678700] **ERROR** { caen_0          } : failed to read status of DRS4 chip 0
+[2016-01-28 18:08:42.678823] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 0
+[2016-01-28 18:08:42.678947] **ERROR** { caen_0          } : failed to read status of DRS4 chip 1
+[2016-01-28 18:08:42.679081] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 1
+[2016-01-28 18:08:42.679219] **ERROR** { caen_0          } : failed to read status of DRS4 chip 2
+[2016-01-28 18:08:42.679355] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 2
+[2016-01-28 18:08:42.679485] **ERROR** { caen_0          } : failed to read status of DRS4 chip 3
+[2016-01-28 18:08:42.679627] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 3
+[2016-01-28 18:08:42.679767] **ERROR** { caen_0          } : write32 failure at address 0xd000ef24
+[2016-01-28 18:08:42.679840] **ERROR** { caen_0          } : failure attempt device reset
+[2016-01-28 18:08:42.980050] **ERROR** { caen_0          } : failed to check device status
+[2016-01-28 18:08:42.980196] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:08:42.980322] **ERROR** { caen_0          } : write32 failure at address 0xd0008120
+[2016-01-28 18:08:42.980392] **ERROR** { caen_0          } : failed to set group enable mask to 0xf
+[2016-01-28 18:08:42.980516] **ERROR** { caen_0          } : write32 failure at address 0xd0008004
+[2016-01-28 18:08:42.980584] **ERROR** { caen_0          } : failed to enable digitization of triggers
+[2016-01-28 18:08:42.980708] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:08:42.980831] **ERROR** { caen_0          } : failed to read device configuration
+[2016-01-28 18:08:42.980954] **ERROR** { caen_0          } : write32 failure at address 0xd0008020
+[2016-01-28 18:08:42.981023] **ERROR** { caen_0          } : failed to write device configuration for trace length
+[2016-01-28 18:08:42.981174] **ERROR** { caen_0          } : write32 failure at address 0xd00080d8
+[2016-01-28 18:08:42.981245] **ERROR** { caen_0          } : failed to write the sampling rate
+[2016-01-28 18:08:42.981369] **ERROR** { caen_0          } : failed to read the pre-trigger buffer register
+[2016-01-28 18:08:42.981499] **ERROR** { caen_0          } : write32 failure at address 0xd0008114
+[2016-01-28 18:08:42.981568] **ERROR** { caen_0          } : failed to set the pre-trigger buffer
+[2016-01-28 18:08:42.981709] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.981834] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.981902] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.982028] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.982152] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.982220] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.982345] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.982469] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.982537] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.982662] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.982785] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.982854] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.982979] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.983102] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.983171] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.983296] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.983420] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.983488] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.983613] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.983736] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.983804] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.983929] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.984053] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:08:42.984121] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.984246] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.984376] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.984452] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.984600] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.984727] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.984797] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.984923] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.985047] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.985115] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.985241] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.985365] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.985434] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.985559] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.985682] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.985750] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.985875] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.985998] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.986066] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.986191] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.986314] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.986382] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.986507] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.986630] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:08:42.986698] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.986823] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.986946] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.987015] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.987139] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.987262] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.987330] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.987455] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.987578] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.987646] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.987771] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.987898] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.987966] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.988092] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.988215] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.988283] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.988408] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.988532] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.988600] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.988725] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.988853] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.988922] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.989048] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.989171] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:08:42.989239] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.989365] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.989488] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.989556] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.989681] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.989804] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.989872] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.989997] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.990120] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.990188] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.990313] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.990436] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.990505] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.990630] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.990753] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.990821] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.990946] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.991069] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.991137] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.991262] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.991385] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.991453] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.991578] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:08:42.991701] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:08:42.991770] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:08:42.991896] **ERROR** { caen_0          } : failed to read trigger register
+[2016-01-28 18:08:42.992019] **ERROR** { caen_0          } : write32 failure at address 0xd000810c
+[2016-01-28 18:08:42.992088] **ERROR** { caen_0          } : failed to enable external/software triggers
+[2016-01-28 18:08:42.992210] **ERROR** { caen_0          } : failed to read BLT Event Number register
+[2016-01-28 18:08:42.992333] **ERROR** { caen_0          } : write32 failure at address 0xd000ef1c
+[2016-01-28 18:08:42.992401] **ERROR** { caen_0          } : failed to set BLT Event Number to 1
+[2016-01-28 18:08:42.992524] **ERROR** { caen_0          } : failed to read VME control register
+[2016-01-28 18:08:42.992646] **ERROR** { caen_0          } : write32 failure at address 0xd000ef00
+[2016-01-28 18:08:42.992714] **ERROR** { caen_0          } : failed to enable BERR in VME control register
+[2016-01-28 18:08:42.992837] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.993112] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.993386] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.993661] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.993939] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.994214] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.994488] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.994762] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.995036] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.995310] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.995584] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.995858] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.996132] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.996407] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.996682] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.996956] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.997230] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.997505] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.997779] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.998053] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.998327] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.998601] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.998863] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.999138] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.999412] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.999687] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:42.999961] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.000236] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.000512] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.000787] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.001061] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.001337] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.001612] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.001886] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.002161] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.002435] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.002710] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.002985] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.003259] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.003534] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.003808] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.004118] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.004404] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.004681] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.004957] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.005238] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.005514] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.005788] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.006062] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.006337] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.006611] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.006884] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.007158] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.007432] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.007706] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.007980] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.008254] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.008528] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.008802] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.009076] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.009340] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.009616] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.009890] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.010165] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.010438] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.010713] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.010986] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.011260] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.011534] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.011808] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.012083] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.012357] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.012631] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.012911] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.013185] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.013462] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.013738] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.014013] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.014288] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.014563] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.014838] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.015112] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.015387] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.015662] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.015937] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.016212] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.016486] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.016765] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.017040] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.017315] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.017591] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.017866] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.018141] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.018416] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.018690] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.018965] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.019240] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.019515] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.019790] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.020064] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.020339] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:08:43.020614] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:08:43.020737] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:08:43.020806] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:08:43.021990] **ERROR** { caen_0          } : write32 failure at address 0xd000ef28
+[2016-01-28 18:08:43.022069] **ERROR** { caen_0          } : failed to clear data
+[2016-01-28 18:09:23.539469] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:09:23.539616] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:09:23.539691] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:10:06.007749] **ERROR** { caen_0          } : failed to read high byte of serial number
+[2016-01-28 18:10:06.007881] **ERROR** { caen_0          } : failed to read lower byte of serial number
+[2016-01-28 18:10:06.008007] **ERROR** { caen_0          } : failed to read hardware revision byte 0
+[2016-01-28 18:10:06.008132] **ERROR** { caen_0          } : failed to read hardware revision byte 1
+[2016-01-28 18:10:06.008267] **ERROR** { caen_0          } : failed to read hardware revision byte 2
+[2016-01-28 18:10:06.008408] **ERROR** { caen_0          } : failed to read hardware revision byte 3
+[2016-01-28 18:10:06.008537] **ERROR** { caen_0          } : failed to read status of DRS4 chip 0
+[2016-01-28 18:10:06.008669] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 0
+[2016-01-28 18:10:06.008804] **ERROR** { caen_0          } : failed to read status of DRS4 chip 1
+[2016-01-28 18:10:06.009094] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 1
+[2016-01-28 18:10:06.009230] **ERROR** { caen_0          } : failed to read status of DRS4 chip 2
+[2016-01-28 18:10:06.009360] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 2
+[2016-01-28 18:10:06.009489] **ERROR** { caen_0          } : failed to read status of DRS4 chip 3
+[2016-01-28 18:10:06.009619] **ERROR** { caen_0          } : failed to read temperature of DRS4 chip 3
+[2016-01-28 18:10:06.009746] **ERROR** { caen_0          } : write32 failure at address 0xd000ef24
+[2016-01-28 18:10:06.009821] **ERROR** { caen_0          } : failure attempt device reset
+[2016-01-28 18:10:06.310034] **ERROR** { caen_0          } : failed to check device status
+[2016-01-28 18:10:06.310182] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:10:06.310310] **ERROR** { caen_0          } : write32 failure at address 0xd0008120
+[2016-01-28 18:10:06.310387] **ERROR** { caen_0          } : failed to set group enable mask to 0xf
+[2016-01-28 18:10:06.310512] **ERROR** { caen_0          } : write32 failure at address 0xd0008004
+[2016-01-28 18:10:06.310581] **ERROR** { caen_0          } : failed to enable digitization of triggers
+[2016-01-28 18:10:06.310705] **ERROR** { caen_0          } : failed to read group enable mask
+[2016-01-28 18:10:06.310829] **ERROR** { caen_0          } : failed to read device configuration
+[2016-01-28 18:10:06.310953] **ERROR** { caen_0          } : write32 failure at address 0xd0008020
+[2016-01-28 18:10:06.311021] **ERROR** { caen_0          } : failed to write device configuration for trace length
+[2016-01-28 18:10:06.311174] **ERROR** { caen_0          } : write32 failure at address 0xd00080d8
+[2016-01-28 18:10:06.311245] **ERROR** { caen_0          } : failed to write the sampling rate
+[2016-01-28 18:10:06.311371] **ERROR** { caen_0          } : failed to read the pre-trigger buffer register
+[2016-01-28 18:10:06.311502] **ERROR** { caen_0          } : write32 failure at address 0xd0008114
+[2016-01-28 18:10:06.311573] **ERROR** { caen_0          } : failed to set the pre-trigger buffer
+[2016-01-28 18:10:06.311716] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.311842] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.311911] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.312039] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.312163] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.312233] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.312360] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.312484] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.312553] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.312679] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.312804] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.312873] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.312999] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.313123] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.313192] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.313319] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.313444] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.313513] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.313639] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.313764] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.313832] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.313959] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.314109] **ERROR** { caen_0          } : write32 failure at address 0xd0001098
+[2016-01-28 18:10:06.314195] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.314328] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.314454] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.314524] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.314651] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.314775] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.314844] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.314976] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.315101] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.315170] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.315297] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.315442] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.315521] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.315653] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.315778] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.315847] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.315973] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.316098] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.316167] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.316293] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.316417] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.316485] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.316612] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.316736] **ERROR** { caen_0          } : write32 failure at address 0xd0001198
+[2016-01-28 18:10:06.316804] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.316932] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.317066] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.317141] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.317283] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.317410] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.317480] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.317607] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.317731] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.317800] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.317927] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.318051] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.318120] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.318246] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.318370] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.318439] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.318565] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.318690] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.318759] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.318885] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.319009] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.319078] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.319204] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.319328] **ERROR** { caen_0          } : write32 failure at address 0xd0001298
+[2016-01-28 18:10:06.319397] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.319528] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.319652] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.319722] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.319848] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.319972] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.320041] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.320167] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.320292] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.320361] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.320487] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.320611] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.320680] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.320807] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.320931] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.321000] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.321126] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.321250] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.321320] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.321446] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.321570] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.321639] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.321765] **ERROR** { caen_0          } : failed to read boad status while setting DAC
+[2016-01-28 18:10:06.321889] **ERROR** { caen_0          } : write32 failure at address 0xd0001398
+[2016-01-28 18:10:06.321959] **ERROR** { caen_0          } : failed to select next DAC
+[2016-01-28 18:10:06.322086] **ERROR** { caen_0          } : failed to read trigger register
+[2016-01-28 18:10:06.322210] **ERROR** { caen_0          } : write32 failure at address 0xd000810c
+[2016-01-28 18:10:06.322279] **ERROR** { caen_0          } : failed to enable external/software triggers
+[2016-01-28 18:10:06.322403] **ERROR** { caen_0          } : failed to read BLT Event Number register
+[2016-01-28 18:10:06.322526] **ERROR** { caen_0          } : write32 failure at address 0xd000ef1c
+[2016-01-28 18:10:06.322595] **ERROR** { caen_0          } : failed to set BLT Event Number to 1
+[2016-01-28 18:10:06.322719] **ERROR** { caen_0          } : failed to read VME control register
+[2016-01-28 18:10:06.322843] **ERROR** { caen_0          } : write32 failure at address 0xd000ef00
+[2016-01-28 18:10:06.322911] **ERROR** { caen_0          } : failed to enable BERR in VME control register
+[2016-01-28 18:10:06.323035] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.323310] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.323585] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.323860] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.324135] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.324410] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.324685] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.324960] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.325235] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.325514] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.325790] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.326065] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.326358] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.326642] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.326922] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.327198] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.327474] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.327749] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.328024] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.328299] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.328575] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.328850] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.329125] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.329400] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.329676] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.329950] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.330225] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.330499] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.330774] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.331056] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.331330] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.331606] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.331881] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.332155] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.332429] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.332704] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.332978] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.333221] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.333498] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.333773] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.334048] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.334322] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.334596] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.334870] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.335145] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.335419] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.335694] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.335968] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.336242] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.336516] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.336795] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.337070] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.337338] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.337614] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.337890] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.338165] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.338440] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.338715] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.338990] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.339265] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.339540] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.339816] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.340091] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.340366] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.340641] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.340918] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.341208] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.341490] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.341769] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.342044] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.342332] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.342624] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.342903] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.343179] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.343455] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.343731] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.344007] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.344282] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.344557] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.344833] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.345108] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.345383] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.345659] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.345934] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.346209] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.346484] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.346759] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.347034] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.347310] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.347588] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.347878] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.348166] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.348447] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.348724] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.349025] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.349319] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.349607] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.349899] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.350226] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.350504] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.351140] **ERROR** { caen_0          } : failed to read board acquiring status
+[2016-01-28 18:10:06.351425] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:10:06.351552] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:10:06.351627] **ERROR** { caen_0          } : failed to write register 0x8100
+[2016-01-28 18:10:06.352813] **ERROR** { caen_0          } : write32 failure at address 0xd000ef28
+[2016-01-28 18:10:06.352889] **ERROR** { caen_0          } : failed to clear data
+[2016-01-28 18:10:33.345459] **ERROR** { caen_0          } : failed to read register 0x8100
+[2016-01-28 18:10:33.345606] **ERROR** { caen_0          } : write32 failure at address 0xd0008100
+[2016-01-28 18:10:33.345682] **ERROR** { caen_0          } : failed to write register 0x8100

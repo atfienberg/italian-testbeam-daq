@@ -32,8 +32,8 @@ endif
 FLAGS += $(shell root-config --cflags)
 LIBS = $(shell root-config --libs)
 
-FLAGS += -Icore/include -Icore/include/drs -Icore/json11
-LIBS += -lm -lzmq -lCAENDigitizer -lusb-1.0 -lutil -lpthread
+FLAGS += -Icore/include -Icore/json11
+LIBS += -lm -lzmq -lCAENDigitizer -lutil -lpthread
 
 COREOBJ += core/build/json11.o
 
