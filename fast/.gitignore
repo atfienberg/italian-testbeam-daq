@@ -6,6 +6,7 @@ build
 build/*
 data
 data/*
+fast-daq.log
 */#*
 */.#*
 */*~
