@@ -2,7 +2,7 @@
   "trigger_port": "tcp://127.0.0.1:42040",
   "handshake_port": "tcp://127.0.0.1:42041",
   "batch_size": 1,
-  "max_event_time": 1200,
+  "max_event_time": 500,
 
   "devices": {
     "fake": {},
@@ -13,7 +13,10 @@
     "caen_6742": {},
 
     "caen_1742": {
-      "caen_0": "caen_1742_0.json"
+    },
+
+    "caen_5720": {
+      "c5720" : "caen_5720_0.json"
     },
 
     "drs4": {}

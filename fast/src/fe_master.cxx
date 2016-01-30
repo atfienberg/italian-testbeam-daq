@@ -213,8 +213,18 @@ int SetupConfig() {
     workers.PushBack(new WorkerCaen1742(name, conf_dir + dev_conf_file));
   }
 
+  // Set up the caen5720 devices.
+  BOOST_FOREACH (const ptree::value_type &v,
+                 conf.get_child("devices.caen_5720")) {
+    string name(v.first);
+    string dev_conf_file(v.second.data());
+
+    workers.PushBack(new WorkerCaenDT5720(name, conf_dir + dev_conf_file));
+  }
+
   // Set up the DRS4 devices.
-  // BOOST_FOREACH (const ptree::value_type &v, conf.get_child("devices.drs4")) {
+  // BOOST_FOREACH (const ptree::value_type &v, conf.get_child("devices.drs4"))
+  // {
   //   string name(v.first);
   //   string dev_conf_file(v.second.data());
 
