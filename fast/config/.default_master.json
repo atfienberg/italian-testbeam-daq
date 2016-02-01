@@ -2,7 +2,7 @@
   "trigger_port": "tcp://127.0.0.1:42040",
   "handshake_port": "tcp://127.0.0.1:42041",
   "batch_size": 1,
-  "max_event_time": 500,
+  "max_event_time": 2000,
 
   "devices": {
     "fake": {},

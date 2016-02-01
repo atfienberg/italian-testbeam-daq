@@ -25,7 +25,7 @@ endif
 ifdef DEBUG
 	FLAGS += -g -pthread
 else
-	FLAGS += -g -pthread
+	FLAGS += -g -pthread -O3
 endif
 
 # ROOT libs and flags
