@@ -81,17 +81,18 @@ int main(int argc, char *argv[]) {
   std::thread handshake_thread(HandshakeLoop);
 
   zmq::message_t msg;
-  int count = 0;
-
+  zmq::pollitem_t pollitem;
+  pollitem.socket = trigger_sck;
+  pollitem.events = ZMQ_POLLIN;
+  
   while (true) {
     // Check for a message.
-    count = 0;
-    do {
-      rc = trigger_sck.recv(&msg, ZMQ_DONTWAIT);
-      ++count;
-      usleep(short_sleep);
+    
+    do{
+      zmq::poll(&pollitem, 1, -1);
+    } while(pollitem.revents != ZMQ_POLLIN);
 
-    } while (!rc && (count < 100));
+    rc = trigger_sck.recv(&msg, ZMQ_DONTWAIT);
 
     if (rc == true) {
       // Process the message.
@@ -291,10 +292,9 @@ int StopRun() {
 
   // Stop the event builder
   event_builder->StopBuilder();
-
-  while (!event_builder->FinishedRun())
-    ;
-
+  
+  while (!event_builder->FinishedRun());
+  
   // Stop the writers
   for (auto it = writers.begin(); it != writers.end(); ++it) {
     (*it)->StopWriter();
@@ -315,16 +315,22 @@ void HandshakeLoop() {
   handshake_sck.bind(conf.get<string>("handshake_port").c_str());
 
   zmq::message_t msg;
-  string msg_string;
   bool rc = false;
 
-  while (true) {
-    try {
-      rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
+  zmq::pollitem_t pollitem;
+  pollitem.socket = handshake_sck;
+  pollitem.events = ZMQ_POLLIN;
 
-    } catch (zmq::error_t e) {
-      continue;
-    }
+  while (true) {
+    do{
+      try{
+	zmq::poll(&pollitem, 1, -1);
+      } catch(const zmq::error_t e) {
+	continue;
+      }      
+    } while(pollitem.revents != ZMQ_POLLIN);
+
+    rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
 
     if (rc == true) {
       usleep(long_sleep);
