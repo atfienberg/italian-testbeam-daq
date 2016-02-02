@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 fe_master
 start_daq
 stop_daq
@@ -7,14 +6,9 @@ build
 build/*
 data
 data/*
+exerciseDaq.py
 bak
 */#*
 */.#*
 */*~
 *~
-=======
-*~
-*#
-*#*
-bak
->>>>>>> mws-dev

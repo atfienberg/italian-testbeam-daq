@@ -90,61 +90,61 @@ int main(int argc, char *argv[]) {
     // Check for a message.
 
     do {
-      try{
-	zmq::poll(pollitems, 2, -1);
+      try {
+        zmq::poll(pollitems, 2, -1);
       } catch (const zmq::error_t &e) {
-	//interruped system call
-	continue;
+        // interruped system call
+        continue;
       }
-    } while ((pollitems[0].revents != ZMQ_POLLIN) 
-	     &&(pollitems[1].revents != ZMQ_POLLIN));
+    } while ((pollitems[0].revents != ZMQ_POLLIN) &&
+             (pollitems[1].revents != ZMQ_POLLIN));
 
-    if(pollitems[0].revents == ZMQ_POLLIN){
+    if (pollitems[0].revents == ZMQ_POLLIN) {
       rc = trigger_sck.recv(&msg, ZMQ_DONTWAIT);
 
       if (rc == true) {
-	// Process the message.
-	std::istringstream ss(static_cast<char *>(msg.data()));
-	std::getline(ss, msg_string, ':');
+        // Process the message.
+        std::istringstream ss(static_cast<char *>(msg.data()));
+        std::getline(ss, msg_string, ':');
 
-	if (msg_string == string("START") && !is_running) {
-	  // Reload the external config.
-	  LoadConfig();
+        if (msg_string == string("START") && !is_running) {
+          // Reload the external config.
+          LoadConfig();
 
-	  // Change the run number.
-	  string file_name("data/labrun_");
-	  std::getline(ss, msg_string, ':');
-	  file_name.append(msg_string);
-	  file_name.append(".root");
+          // Change the run number.
+          string file_name("data/labrun_");
+          std::getline(ss, msg_string, ':');
+          file_name.append(msg_string);
+          file_name.append(".root");
 
-	  // Save the internal config.
-	  ptree conf;
-	  read_json(tmp_conf_file, conf);
-	  conf.put("writers.root.file", file_name);
-	  write_json(tmp_conf_file, conf);
+          // Save the internal config.
+          ptree conf;
+          read_json(tmp_conf_file, conf);
+          conf.put("writers.root.file", file_name);
+          write_json(tmp_conf_file, conf);
 
-	  // Setup the config and run.
-	  SetupConfig();
-	  StartRun();
+          // Setup the config and run.
+          SetupConfig();
+          StartRun();
 
-	} else if (msg_string == string("STOP") && is_running) {
-	  StopRun();
-	  FreeConfig();
-	}
+        } else if (msg_string == string("STOP") && is_running) {
+          StopRun();
+          FreeConfig();
+        }
       }
 
       usleep(daq::long_sleep);
     }
 
-    if(pollitems[1].revents == ZMQ_POLLIN){
+    if (pollitems[1].revents == ZMQ_POLLIN) {
       rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
 
       if (rc == true) {
-	usleep(long_sleep);
+        usleep(long_sleep);
 
-	do {
-	  rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
-	} while (rc == false);
+        do {
+          rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
+        } while (rc == false);
       }
     }
   }

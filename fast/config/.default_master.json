@@ -13,11 +13,10 @@
     "caen_6742": {},
 
     "caen_1742": {
-	"caen_0" : "caen_1742_0.json"
     },
 
     "caen_5720": {
-	"c5": "caen_5720_0.json"
+	"c5720" : "caen_5720_0.json"
     },
 
     "drs4": {}
@@ -25,7 +24,7 @@
 
   "writers": {
     "root": {
-      "in_use": false,
+      "in_use": true,
       "file": "data/run_00247.root",
       "tree": "t",
       "sync": false
