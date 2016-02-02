@@ -54,7 +54,6 @@ int SetupConfig();  // all the workers and writers
 int FreeConfig();   // free all the workers and writers
 int StartRun();
 int StopRun();
-void HandshakeLoop();
 
 // The main loop
 int main(int argc, char *argv[]) {
@@ -77,56 +76,77 @@ int main(int argc, char *argv[]) {
   zmq::socket_t trigger_sck(msg_context, ZMQ_PULL);
   trigger_sck.bind(conf.get<string>("trigger_port").c_str());
 
-  // Launch the thread that confirms a running frontend.
-  std::thread handshake_thread(HandshakeLoop);
+  zmq::socket_t handshake_sck(msg_context, ZMQ_REP);
+  handshake_sck.bind(conf.get<string>("handshake_port").c_str());
 
   zmq::message_t msg;
-  zmq::pollitem_t pollitem;
-  pollitem.socket = trigger_sck;
-  pollitem.events = ZMQ_POLLIN;
-  
+  zmq::pollitem_t pollitems[2];
+  pollitems[0].socket = trigger_sck;
+  pollitems[0].events = ZMQ_POLLIN;
+  pollitems[1].socket = handshake_sck;
+  pollitems[1].events = ZMQ_POLLIN;
+
   while (true) {
     // Check for a message.
-    
-    do{
-      zmq::poll(&pollitem, 1, -1);
-    } while(pollitem.revents != ZMQ_POLLIN);
 
-    rc = trigger_sck.recv(&msg, ZMQ_DONTWAIT);
-
-    if (rc == true) {
-      // Process the message.
-      std::istringstream ss(static_cast<char *>(msg.data()));
-      std::getline(ss, msg_string, ':');
-
-      if (msg_string == string("START") && !is_running) {
-        // Reload the external config.
-        LoadConfig();
-
-        // Change the run number.
-        string file_name("data/labrun_");
-        std::getline(ss, msg_string, ':');
-        file_name.append(msg_string);
-        file_name.append(".root");
-
-        // Save the internal config.
-        ptree conf;
-        read_json(tmp_conf_file, conf);
-        conf.put("writers.root.file", file_name);
-        write_json(tmp_conf_file, conf);
-
-        // Setup the config and run.
-        SetupConfig();
-
-        StartRun();
-
-      } else if (msg_string == string("STOP") && is_running) {
-        StopRun();
-        FreeConfig();
+    do {
+      try{
+	zmq::poll(pollitems, 2, -1);
+      } catch (const zmq::error_t &e) {
+	//interruped system call
+	continue;
       }
+    } while ((pollitems[0].revents != ZMQ_POLLIN) 
+	     &&(pollitems[1].revents != ZMQ_POLLIN));
+
+    if(pollitems[0].revents == ZMQ_POLLIN){
+      rc = trigger_sck.recv(&msg, ZMQ_DONTWAIT);
+
+      if (rc == true) {
+	// Process the message.
+	std::istringstream ss(static_cast<char *>(msg.data()));
+	std::getline(ss, msg_string, ':');
+
+	if (msg_string == string("START") && !is_running) {
+	  // Reload the external config.
+	  LoadConfig();
+
+	  // Change the run number.
+	  string file_name("data/labrun_");
+	  std::getline(ss, msg_string, ':');
+	  file_name.append(msg_string);
+	  file_name.append(".root");
+
+	  // Save the internal config.
+	  ptree conf;
+	  read_json(tmp_conf_file, conf);
+	  conf.put("writers.root.file", file_name);
+	  write_json(tmp_conf_file, conf);
+
+	  // Setup the config and run.
+	  SetupConfig();
+	  StartRun();
+
+	} else if (msg_string == string("STOP") && is_running) {
+	  StopRun();
+	  FreeConfig();
+	}
+      }
+
+      usleep(daq::long_sleep);
     }
 
-    usleep(daq::long_sleep);
+    if(pollitems[1].revents == ZMQ_POLLIN){
+      rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
+
+      if (rc == true) {
+	usleep(long_sleep);
+
+	do {
+	  rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
+	} while (rc == false);
+      }
+    }
   }
 
   return 0;
@@ -292,9 +312,10 @@ int StopRun() {
 
   // Stop the event builder
   event_builder->StopBuilder();
-  
-  while (!event_builder->FinishedRun());
-  
+
+  while (!event_builder->FinishedRun())
+    ;
+
   // Stop the writers
   for (auto it = writers.begin(); it != writers.end(); ++it) {
     (*it)->StopWriter();
@@ -304,43 +325,4 @@ int StopRun() {
   workers.StopRun();
 
   return 0;
-}
-
-void HandshakeLoop() {
-  ptree conf;
-  read_json(tmp_conf_file, conf);
-
-  // zmq declarations
-  zmq::socket_t handshake_sck(msg_context, ZMQ_REP);
-  handshake_sck.bind(conf.get<string>("handshake_port").c_str());
-
-  zmq::message_t msg;
-  bool rc = false;
-
-  zmq::pollitem_t pollitem;
-  pollitem.socket = handshake_sck;
-  pollitem.events = ZMQ_POLLIN;
-
-  while (true) {
-    do{
-      try{
-	zmq::poll(&pollitem, 1, -1);
-      } catch(const zmq::error_t e) {
-	continue;
-      }      
-    } while(pollitem.revents != ZMQ_POLLIN);
-
-    rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
-
-    if (rc == true) {
-      usleep(long_sleep);
-
-      do {
-        rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
-      } while (rc == false);
-    }
-  }
-
-  usleep(long_sleep);
-  std::this_thread::yield();
 }

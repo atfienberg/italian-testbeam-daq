@@ -13,10 +13,11 @@
     "caen_6742": {},
 
     "caen_1742": {
+	"caen_0" : "caen_1742_0.json"
     },
 
     "caen_5720": {
-      "c5720" : "caen_5720_0.json"
+	"c5": "caen_5720_0.json"
     },
 
     "drs4": {}
@@ -24,7 +25,7 @@
 
   "writers": {
     "root": {
-      "in_use": true,
+      "in_use": false,
       "file": "data/run_00247.root",
       "tree": "t",
       "sync": false
@@ -42,10 +43,5 @@
       "port": "tcp://127.0.0.1:42044",
       "high_water_mark": 10
     }
-  },
-  
-  "trigger_control": {
-    "live_time": "10000000",
-    "dead_time": "1"
   }
 }

@@ -18,8 +18,9 @@ int main(int argc, char const *argv[]) {
     if (ret == 0) {
       CAEN_DGTZ_BoardInfo_t bInfo;
       CAEN_DGTZ_GetInfo(handle, &bInfo);
-      cout << bInfo.Channels << " channel, " << bInfo.ADC_NBits << " bit " << bInfo.ModelName
-           << " found with id " << id << " and handle " << handle << endl;
+      cout << bInfo.Channels << " channel, " << bInfo.ADC_NBits << " bit "
+           << bInfo.ModelName << " found with id " << id << " and handle "
+           << handle << endl;
       CAEN_DGTZ_CloseDigitizer(handle);
     } else if (id == 0) {
       cout << "no digitizers found." << endl;
