@@ -461,6 +461,8 @@ def generate_runlog():
     n_runs = get_last_data()['run_number']
     counter = 0
 
+    next_prog = 1
+
     with open(app.config['UPLOAD_FOLDER']+'/'+run_info['runlog'], 'w') as runlog:
         runlog.write(runlog_headers)
 
@@ -489,7 +491,8 @@ def generate_runlog():
             counter += 1
             progress = 100*float(counter)/n_runs
             
-            if counter % 100 == 0 or counter == n_runs:
+            if progress > next_prog or counter == n_runs:
+                next_prog += 1
                 emit('progress', "%02i%s Generated" % 
                      (progress, "%"))
 
