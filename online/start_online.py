@@ -465,6 +465,7 @@ def generate_runlog():
         runlog.write(runlog_headers)
 
         for doc in db.view('_design/all/_view/all', descending=True):
+            runlog.write('\n')
             data = doc['value']
 
             runlog_line = ''
@@ -491,7 +492,8 @@ def generate_runlog():
             if counter % 100 == 0 or counter == n_runs:
                 emit('progress', "%02i%s Generated" % 
                      (progress, "%"))
-    
+
+        runlog.write('\n')
     emit('runlog ready')
 
 
