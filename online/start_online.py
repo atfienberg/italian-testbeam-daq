@@ -14,7 +14,6 @@ import couchdb
 from couchdb.design import ViewDefinition
 import os, datetime
 import threading
-import collections
 
 import serial
 
@@ -458,40 +457,40 @@ def generate_runlog():
     runlog_headers = get_runlog_headers()
 
     #fill runlog lines with database info
-    runlog_lines = collections.deque()
     db = connect_db(run_info['db_name'])
     n_runs = get_last_data()['run_number']
     counter = 0
-    for doc in db.view('_design/all/_view/all'):
-        data = doc['value']
-    
-        runlog_lines.appendleft('')
-        if 'run_number' in data:
-            runlog_lines[0] += str(data['run_number'])
-        else:
-            runlog_lines[0] += 'N/A'
-        for attr in run_info['attr']:
-                if attr in data:
-                    runlog_lines[0] += ', ' + str(data[attr])
-                else: 
-                    runlog_lines[0] += (', N/A')
-        for info in run_info['log_info']:
-            if info in data:
-                runlog_lines[0] += ', ' + str(data[info])
-            else:
-                runlog_lines[0] += (', N/A')
 
-        counter+=1
-        progress = 100*float(counter)/n_runs
-
-        emit('progress', "%02i%s Generated" % 
-             (progress, "%"))
-    
-    #write the file
     with open(app.config['UPLOAD_FOLDER']+'/'+run_info['runlog'], 'w') as runlog:
         runlog.write(runlog_headers)
-        for line in runlog_lines:
-            runlog.write('\n' + line)
+
+        for doc in db.view('_design/all/_view/all', descending=True):
+            data = doc['value']
+
+            runlog_line = ''
+            if 'run_number' in data:
+                runlog_line += str(data['run_number'])
+            else:
+                runlog_line += 'N/A'
+            for attr in run_info['attr']:
+                if attr in data:
+                    runlog_line += ', ' + str(data[attr])
+                else: 
+                    runlog_line += (', N/A')
+            for info in run_info['log_info']:
+                if info in data:
+                    runlog_line += ', ' + str(data[info])
+                else:
+                    runlog_line += (', N/A')
+
+            runlog.write(runlog_line)
+
+            counter += 1
+            progress = 100*float(counter)/n_runs
+            
+            if counter % 100 == 0 or counter == n_runs:
+                emit('progress', "%02i%s Generated" % 
+                     (progress, "%"))
     
     emit('runlog ready')
 
