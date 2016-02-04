@@ -1,4 +1,15 @@
 {
-    "name":"caen_drs_5720_0",
-    "device_id" : 0
+  "name": "caen_drs_5720_0",
+
+  "device_id": 0,
+
+  "post trigger comment": "post trigger delay is in percent, 0-100",
+  "post_trigger_delay": 50,
+  
+  "channel_offset": [
+    0.1,
+    0.2,
+    0.7,
+    0.8
+  ]
 }
