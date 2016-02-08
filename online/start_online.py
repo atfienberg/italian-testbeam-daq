@@ -95,6 +95,7 @@ def start_run():
 
     handshake_sck = context.socket(zmq.REQ)
     handshake_sck.setsockopt(zmq.LINGER, 0);
+    handshake_sck.setsockopt(zmq.RCVTIMEO, 200);
     start_sck = context.socket(zmq.PUSH)
     start_sck.setsockopt(zmq.LINGER, 0)
 
@@ -105,9 +106,8 @@ def start_run():
     msg = "CONNECT"
     handshake_sck.send(msg)
     reply = ""
-    sleep(0.2) #give fast-daq chance to reply
     try:
-        reply = handshake_sck.recv(zmq.NOBLOCK)
+        reply = handshake_sck.recv()
     except zmq.error.Again:
         error = "fast-daq not responding (is it running?)"
         return render_template('new_run.html', info=run_info, 
@@ -604,7 +604,7 @@ def query_bk_status():
 
 @socketio.on("toggle bk power", namespace='/online')
 def toggle_bk_power():
-    bk = serial.Serial('/dev/ttyUSB1', 4800, timeout=0.5)
+    bk = serial.Serial('/dev/keyspan', 4800, timeout=0.5)
 
     #really seems to need two commands to start out for some reason
     bk.write('*idn?\nOUTP:STAT?\n')
@@ -641,7 +641,7 @@ def new_bk_voltage(msg):
         emit('invalid bk setting')
         return
 
-    bk = serial.Serial('/dev/ttyUSB1', 4800, timeout=0.5)
+    bk = serial.Serial('/dev/keyspan', 4800, timeout=0.5)
     
     bk.write("*IDN?\n")
     read_serial(bk)
