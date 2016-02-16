@@ -97,7 +97,6 @@ def start_run():
     handshake_sck.setsockopt(zmq.LINGER, 0);
     handshake_sck.setsockopt(zmq.RCVTIMEO, 200);
     start_sck = context.socket(zmq.PUSH)
-    start_sck.setsockopt(zmq.LINGER, 0)
 
     conf = json.load(open(os.path.join(cwd, '../fast/config/.default_master.json')))
     start_sck.connect(conf['trigger_port'])
@@ -147,22 +146,10 @@ def end_run():
 
     # Send a stop run signal to fe_master.
     context = zmq.Context()
-    handshake_sck = context.socket(zmq.REQ)
-    handshake_sck.setsockopt(zmq.LINGER, 0);
-    stop_sck = context.socket(zmq.PUSH)
-    stop_sck.setsockopt(zmq.LINGER, 0)
-
+    stop_sck = context.socket(zmq.PUSH);
     conf = json.load(open(os.path.join(cwd, '../fast/config/.default_master.json')))
     stop_sck.connect(conf['trigger_port'])
-    handshake_sck.connect(conf['handshake_port'])
-
-    msg = "CONNECT"
-    handshake_sck.send(msg)
-    if (handshake_sck.recv() == msg):
-        # Connection established.
-        stop_sck.send("STOP:")
-
-    handshake_sck.close()
+    stop_sck.send("STOP:")
     stop_sck.close()
     context.destroy()
 
@@ -172,7 +159,7 @@ def end_run():
         data_io.end_run()
 
     data = get_last_data()
-    data['Events'] = data_io.eventCount
+    data['Events'] = data_io.event_count
     data['Rate'] = "%.1f" % data_io.rate
     now = datetime.datetime.now()
     data['End Date'] = "%02i/%02i/%04i" % (now.month, now.day, now.year)
@@ -341,14 +328,14 @@ def get_upload(filename):
 
 @app.route('/nEvents')
 def n_events_query():
-    return repr(data_io.eventCount)
+    return repr(data_io.event_count)
 
 def send_events():
     """sends data to the clients while a run is going"""
     last = last_run_number()
     while not data_io.run_over.isSet():
         sleep(0.1)
-        socketio.emit('event info', {"count" : data_io.eventCount, "rate" : data_io.rate, 
+        socketio.emit('event info', {"count" : data_io.event_count, "rate" : data_io.rate, 
                                      "runNumber" : last },
                       namespace='/online')
         
@@ -363,7 +350,7 @@ def update_hist(msg):
         this_dev = device + ' channel ' + str(channel)
 
         title = 'Run %i Event %i, %s channel %i' % (last_run_number(), 
-                                                    data_io.eventCount,
+                                                    data_io.event_count,
                                                     device, 
                                                     channel)              
 
@@ -395,7 +382,7 @@ def update_trace(msg):
     device = selection[0]
     channel = int(selection[-1])
     
-    title = 'Run %i Event %i, %s channel %i' % (last_run_number(), data_io.eventCount,
+    title = 'Run %i Event %i, %s channel %i' % (last_run_number(), data_io.event_count,
                                                 device, channel)
                   
     data = [['sample', 'adc counts']]
@@ -504,7 +491,7 @@ def generate_runlog():
 def on_refresh():
     """when a client refreshes his page, this ds him a fresh batch of data"""
     if running:
-        emit('event info', {"count" : data_io.eventCount, "rate" : data_io.rate})
+        emit('event info', {"count" : data_io.event_count, "rate" : data_io.rate})
 
 def read_serial(s, terminator='\n'):
     """tries to read one byte at a time but breaks if timeout"""

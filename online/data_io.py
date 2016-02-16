@@ -24,7 +24,7 @@ wireY = []
 run_over = threading.Event()
 
 rate = 0 
-eventCount = 0
+event_count = 0
 
 
 
@@ -34,13 +34,13 @@ def clear_data():
     global wireX
     global wireY
     global rate
-    global eventCount
+    global event_count
     data = {}
     hists = {}
     wireX = []
     wireY = []
     rate = 0
-    eventCount = 0
+    event_count = 0
     
     generate_data.counter = 0
 
@@ -80,7 +80,7 @@ def pull_event(e, start):
 
     """
     global rate
-    global eventCount
+    global event_count
     global trace
     global hists
     global data
@@ -130,8 +130,8 @@ def pull_event(e, start):
                 except:
                     pass
                     
-            eventCount = data['event_number']
-            rate = float(eventCount)/(time()-start)
+            event_count = data['event_number']
+            rate = float(event_count)/(time()-start)
 
         except:
             pass
@@ -152,9 +152,9 @@ def generate_data(e, data):
         
 
         global rate
-        global eventCount
+        global event_count
         global trace
-        eventCount+=1
+        event_count+=1
 
         trace = np.random.standard_normal(len(trace))
         data.append(trace.max())
