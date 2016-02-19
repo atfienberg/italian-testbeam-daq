@@ -731,8 +731,10 @@ if __name__ == '__main__':
 				      if( doc.run_number )
 					  emit(parseInt(doc.run_number), doc);
 				  }''')
-        couch = couchdb.Server()
-        db = couch[run_info['db_name']]
+        #these three lines if authentication is needed to create the view
+        #couch = couchdb.Server()
+        #couch.resource.credentials = (USERNAME, PASSWORD) 
+        #db = couch[run_info['db_name']]
         view_def.sync(db)
         if '_design/all' not in db:
             print 'error: cannot create view. Do you have credentials?'

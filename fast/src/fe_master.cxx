@@ -81,9 +81,9 @@ int main(int argc, char *argv[]) {
 
   zmq::message_t msg;
   zmq::pollitem_t pollitems[2];
-  pollitems[0].socket = trigger_sck;
+  pollitems[0].socket = (void *)trigger_sck;
   pollitems[0].events = ZMQ_POLLIN;
-  pollitems[1].socket = handshake_sck;
+  pollitems[1].socket = (void *)handshake_sck;
   pollitems[1].events = ZMQ_POLLIN;
 
   while (true) {
@@ -274,9 +274,10 @@ int SetupConfig() {
 }
 
 int FreeConfig() {
+  // this call will free workers through workerlist destructor
+  // (event builder has a worker list member variable)
   delete event_builder;
 
-  // Delete the allocated workers.
   workers.Resize(0);
 
   // Delete the allocated writers.
