@@ -24,7 +24,6 @@ using namespace boost::property_tree;
 #include "worker_list.hh"
 #include "writer_online.hh"
 #include "writer_root.hh"
-#include "writer_midas.hh"
 #include "event_builder.hh"
 #include "common.hh"
 
@@ -260,11 +259,7 @@ int SetupConfig() {
     } else if (string(v.first) == string("online") &&
                v.second.get<bool>("in_use")) {
       writers.push_back(new WriterOnline(tmp_conf_file));
-
-    } else if (string(v.first) == string("midas") &&
-               v.second.get<bool>("in_use")) {
-      writers.push_back(new WriterMidas(tmp_conf_file));
-    }
+    } 
   }
 
   // Set up the event builder.
