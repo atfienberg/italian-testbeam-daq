@@ -498,7 +498,11 @@ def read_serial(s, terminator='\n'):
     response = ''
     while True:
         old_len = len(response)
-        response += s.read(1)
+        try:
+            response += s.read(1)
+        except:
+            #communication problem
+            continue
         try:
             if response[-1] == terminator:
                 break
@@ -514,19 +518,14 @@ def read_serial(s, terminator='\n'):
 @socketio.on('filter position?', namespace='/online')
 def query_filter_position():
     filter = serial.Serial('/dev/filterwheel', 115200, timeout=1)
+    read_serial(filter, '>')
     filter.write('pos?\r')
-    counter = 0
-    while True:
-        try:
-            response = read_serial(filter, '>')
-            if(response[-1] == '>'):
-                emit('filter position is: ', {'position' : response[-2]})
-                return
-        except IndexError:
-            counter += 1
-            sleep(0.01)
-            if counter == 500:
-                return
+    try:
+        response = read_serial(filter, '>')
+        if(response[-1] == '>'):
+            emit('filter position is: ', {'position' : response[-2]})
+    except IndexError:
+        pass
 
 @socketio.on('new filter wheel setting', namespace='/online')
 def new_filter_wheel_setting(msg):
