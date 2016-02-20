@@ -518,7 +518,6 @@ def read_serial(s, terminator='\n'):
 @socketio.on('filter position?', namespace='/online')
 def query_filter_position():
     filter = serial.Serial('/dev/filterwheel', 115200, timeout=1)
-    read_serial(filter, '>')
     filter.write('pos?\r')
     try:
         response = read_serial(filter, '>')

@@ -37,7 +37,7 @@ measured output voltage: <b id="bk_measured"></b>
       });
       
       socket.on('filter moved', function(msg){
-	  socket.emit('filter position?')
+	  setTimeout(function() {socket.emit('filter position?'); }, 1000);
 	  $('#newSetting').val("");
 	  $('#settingError').hide();
       });
