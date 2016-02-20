@@ -115,7 +115,7 @@ def pull_event(e, start):
                         this_dev = device + ' channel ' + str(i)
                         if this_dev not in hists:
                             hists[this_dev] = []
-                        hists[this_dev].append(max(data[device]['trace'][i]))
+                        hists[this_dev].append(min(data[device]['trace'][i]))
                 except:
                     pass
                 try:
