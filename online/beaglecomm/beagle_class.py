@@ -12,7 +12,7 @@ class Beagle:
         self.setsockopt(zmq.RCVTIME, timeout)
         self.socket.connect(connection_addr)
 
-    def read_temp(sipm_num):
+    def read_temp(self, sipm_num):
         self.socket.send("sipm %i temp")
         try:
             return socket.recv()
