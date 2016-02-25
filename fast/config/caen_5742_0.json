@@ -1,6 +1,6 @@
 {
 	"name":"caen_drs_0",
-	"device_id":1,
+	"device_id":2,
         "sampling_rate":1.0,
         "pretrigger_delay":50,
 	"use_drs4_corrections":true,
