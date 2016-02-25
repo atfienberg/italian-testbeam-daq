@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]) {
   CAEN_DGTZ_ErrorCode ret = CAEN_DGTZ_Success;
   int handle = 0;
 
-  int id = 0;
+  int id = 1;
   while (ret == CAEN_DGTZ_Success) {
     ret = CAEN_DGTZ_OpenDigitizer(CAEN_DGTZ_USB, id, 0, 0, &handle);
     if (ret == 0) {
@@ -24,6 +24,7 @@ int main(int argc, char const *argv[]) {
       CAEN_DGTZ_CloseDigitizer(handle);
     } else if (id == 0) {
       cout << "no digitizers found." << endl;
+      cout << ret << endl;
     }
 
     ++id;

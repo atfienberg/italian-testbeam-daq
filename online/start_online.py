@@ -43,7 +43,7 @@ socketio = SocketIO(app, async_mode='eventlet')
 
 #Define attributes of a run
 run_info = {}
-run_info['db_name'] = 'lab_db'
+run_info['db_name'] = 'testbeam_db'
 run_info['attr'] = ['Description', 'Bias Voltage', 'Temperature']
 run_info['log_info'] = ['Events', 'Rate', 'Start Date', 'Start Time', 'End Date', 'End Time']
 run_info['runlog'] = 'runlog.csv'
@@ -738,4 +738,4 @@ if __name__ == '__main__':
             print 'error: cannot create view. Do you have credentials?'
             sys.exit(0)
 
-    socketio.run(app, host='0.0.0.0')
+    socketio.run(app)

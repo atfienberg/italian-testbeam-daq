@@ -15,7 +15,8 @@ using std::endl;
 int main(int argc, char *argv[])
 {
   // Set default config file location.
-  std::string conf_file("/home/newg2/Workspace/aaron-work/italian-testbeam-daq/fast/");
+  std::string conf_file("/home/venanzoni/testBeam/italian-testbeam-daq/fast/");
+
   conf_file += std::string("config/.default_master.json");
 
   // Check for a different config file

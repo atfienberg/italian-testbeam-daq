@@ -9,7 +9,6 @@ from time import sleep, time
 import threading
 import Queue
 from flask.ext.socketio import emit
-import gevent
 
 import zmq, json, os
 

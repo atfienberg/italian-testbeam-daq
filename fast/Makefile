@@ -30,10 +30,9 @@ endif
 
 # ROOT libs and flags
 FLAGS += $(shell root-config --cflags)
-LIBS = $(shell root-config --libs)
 
 FLAGS += -Icore/include -Icore/json11
-LIBS += -lm -lzmq -lCAENDigitizer -lutil -lpthread
+LIBS = -L/usr/lib/i386-linux-gnu -lCore -lCint -lRIO -lNet -lHist -lGraf -lGpad -lTree -lRint -lMatrix -lMathCore -lThread -pthread -lm -ldl -rdynamic -lCAENDigitizer -lzmq
 
 COREOBJ += core/build/json11.o
 
