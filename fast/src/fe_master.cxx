@@ -201,6 +201,15 @@ int SetupConfig() {
     workers.PushBack(new WorkerCaen1785(name, conf_dir + dev_conf_file));
   }
 
+  // Set up the caen5730 devices.
+  BOOST_FOREACH (const ptree::value_type &v,
+                 conf.get_child("devices.caen_5730")) {
+    string name(v.first);
+    string dev_conf_file(v.second.data());
+
+    workers.PushBack(new WorkerCaenDT5730(name, conf_dir + dev_conf_file));
+  }
+
   // Set up the caen6742 devices.
   std::vector<WorkerCaen6742 *> caen_vec;
   BOOST_FOREACH (const ptree::value_type &v,
@@ -241,16 +250,6 @@ int SetupConfig() {
 
     workers.PushBack(new WorkerCaenDT5720(name, conf_dir + dev_conf_file));
   }
-
-  // Set up the caen5730 devices.
-  BOOST_FOREACH (const ptree::value_type &v,
-                 conf.get_child("devices.caen_5730")) {
-    string name(v.first);
-    string dev_conf_file(v.second.data());
-
-    workers.PushBack(new WorkerCaenDT5730(name, conf_dir + dev_conf_file));
-  }
-
 
   // Set up the DRS4 devices.
   // BOOST_FOREACH (const ptree::value_type &v, conf.get_child("devices.drs4"))

@@ -363,24 +363,25 @@ def update_hist(msg):
 @socketio.on('update trace', namespace='/online')
 def update_trace(msg):
     """send data to client needed to make trace"""
+    selection = msg['selected'].split(' ')
+
+    device = selection[0]
+    channel = int(selection[-1])
+
+    xmax_max = len(data_io.data[device]['trace'][channel])
     try: 
         xmin = int(msg['x_min'])
         xmax = int(msg['x_max'])
         if xmin < 0:
             xmin = 0
-        if xmax > 1024:
-            xmax = 1024
+        if xmax > xmax_max:
+            xmax = xmax_max
         if xmin >= xmax:
             xmin = 0
-            xmax = 1024
+            xmax = xmax_max
     except:
         xmin = 0
-        xmax = 1024
-
-    selection = msg['selected'].split(' ')
-
-    device = selection[0]
-    channel = int(selection[-1])
+        xmax = xmax_max
     
     title = 'Run %i Event %i, %s channel %i' % (last_run_number(), data_io.event_count,
                                                 device, channel)

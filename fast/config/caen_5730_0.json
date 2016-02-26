@@ -4,7 +4,7 @@
   "device_id": 1,
 
   "post trigger comment": "post trigger delay is in percent, 0-100",
-  "post_trigger_delay": 50,
+  "post_trigger_delay": 20,
   
   "channel_offset": [
     0.5,
@@ -17,12 +17,12 @@
     0.5
   ],
   
-  "channel gain commment": "channel gain either high for 0.5 vpp, or low for 2.0 vpp",
+  "channel gain commment": "channel gain either low for 0.5 vpp, or low for 2.0 vpp",
   "channel_gain" : [
-    "high",
-    "high",
-    "high",
-    "high",
+    "low",
+    "low",
+    "low",
+    "low",
     "low",
     "low",
     "low",
