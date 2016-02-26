@@ -4,7 +4,7 @@
   "device_id": 1,
 
   "post trigger comment": "post trigger delay is in percent, 0-100",
-  "post_trigger_delay": 20,
+  "post_trigger_delay": 50,
   
   "channel_offset": [
     0.5,

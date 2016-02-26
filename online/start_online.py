@@ -518,12 +518,14 @@ def read_serial(s, terminator='\n'):
 
 @socketio.on('filter position?', namespace='/online')
 def query_filter_position():
-    filter = serial.Serial('/dev/filterwheel', 115200, timeout=1)
+    filter = serial.Serial('/dev/filterwheel', 115200, timeout=0.5)
     filter.write('pos?\r')
     try:
         response = read_serial(filter, '>')
         if(response[-1] == '>'):
-            emit('filter position is: ', {'position' : response[-2]})
+            begin = response.find("?")
+            end = response.find(">")
+            emit('filter position is: ', {'position' : response[begin+1:end]})
     except IndexError:
         pass
 
@@ -534,8 +536,8 @@ def new_filter_wheel_setting(msg):
         new_setting = int(msg['new_setting'])
     except ValueError:
         badValue = True
-    if not badValue and new_setting < 7 and new_setting > 0:
-        filter = serial.Serial('/dev/filterwheel', 115200, timeout=1)
+    if not badValue and new_setting < 13 and new_setting > 0:
+        filter = serial.Serial('/dev/filterwheel', 115200, timeout=0.5)
         filter.write('pos=%s\r' % repr(new_setting))
         read_serial(filter)
         emit('filter moved')
@@ -544,7 +546,7 @@ def new_filter_wheel_setting(msg):
 
 @socketio.on('bk status', namespace='/online')
 def query_bk_status():
-    bk = serial.Serial('/dev/keyspan', 4800, timeout=1)
+    bk = serial.Serial('/dev/keyspan', 4800, timeout=0.5)
 
     #make sure we are current limited at desired level
     current_limit = 0.005

@@ -28,7 +28,7 @@
 
   "writers": {
     "root": {
-      "in_use": false,
+      "in_use": true,
       "file": "data/run_00247.root",
       "tree": "t",
       "sync": false

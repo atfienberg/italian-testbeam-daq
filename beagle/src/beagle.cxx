@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]) {
   sock.setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
   sock.setsockopt(ZMQ_LINGER, &linger, sizeof(linger));
 
-  sock.connect("tcp://192.168.0.22:6669");
+  sock.connect("tcp://192.168.7.2:6669");
 
   if(argc < 2){
     cout << "must give request string." << endl;
