@@ -19,6 +19,7 @@ import serial
 
 import data_io
 import zmq, json
+import numpy as np
 from time import sleep, time
 from setproctitle import setproctitle
 
@@ -353,12 +354,15 @@ def update_hist(msg):
                                                     data_io.event_count,
                                                     device, 
                                                     channel)              
+        data = data_io.hists[this_dev]
+        hist = np.histogram(data, 100)    
+        chart_data = [['minimum sample', 'n events']]
+        for i, bin_value in enumerate(hist[0]):
+            chart_data.append([0.5*(hist[1][i+1] + hist[1][i]), bin_value])
 
-        data = [['amplitudes']]
-        data.extend([[i] for i in data_io.hists[this_dev]])
-        emit('histogram ready', {"title" : title, "data" : data});
+        emit('histogram ready', {"title" : title, "data" : chart_data})
     except:
-        pass    
+       pass    
         
 @socketio.on('update trace', namespace='/online')
 def update_trace(msg):

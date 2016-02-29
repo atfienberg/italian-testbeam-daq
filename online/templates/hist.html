@@ -34,14 +34,18 @@
 		       position: 'none'
 		   },
 		   hAxis: {
-		       title: "pulse amplitude (+ polarity)",
+		       title: 'minimum sample',
+		       baseline: 'none'
 		   },
 		   vAxis: {
-		       title: "n counts",
+		       title: 'n counts',
+		   },
+		   bar : {
+		       groupWidth: '90%',
 		   },
 		   fontSize: 18
 	       };
-	       var amplhist = new google.visualization.Histogram(document.getElementById('hist_plot'));
+	       var amplhist = new google.visualization.ColumnChart(document.getElementById('hist_plot'));
 	       amplhist.draw(histdata, options)
 	   });
 
