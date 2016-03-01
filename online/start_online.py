@@ -12,7 +12,7 @@ from werkzeug.utils import secure_filename
 from uuid import uuid4
 import couchdb
 from couchdb.design import ViewDefinition
-import os, datetime
+import os, datetime, sys
 import threading
 
 import serial
@@ -45,7 +45,8 @@ socketio = SocketIO(app, async_mode='eventlet')
 #Define attributes of a run
 run_info = {}
 run_info['db_name'] = 'testbeam_db'
-run_info['attr'] = ['Description', 'Bias Voltage', 'Temperature']
+# run_info['attr'] = ['Description', 'Bias Voltage', 'Temperature']
+run_info['attr'] = ['Description']
 run_info['log_info'] = ['Events', 'Rate', 'Start Date', 'Start Time', 'End Date', 'End Time']
 run_info['runlog'] = 'runlog.csv'
 
@@ -86,7 +87,7 @@ def start_run():
 
     complete = check_form_data(run_info, data)
     if not complete:
-        error = "All fields in the form must be filled."
+        error = "Please fill in all fields."
         return render_template('new_run.html', info=run_info, 
                                last=last_run_number(), data=data, error=error, new=True,
                                in_progress=running)
@@ -398,9 +399,9 @@ def update_trace(msg):
 def get_runlog_headers():
     runlog_headers = 'Run#'
     for attr in run_info['attr']:
-        runlog_headers += ', ' + attr
+        runlog_headers += '\t ' + attr
     for info in run_info['log_info']:
-        runlog_headers += ', ' + info
+        runlog_headers += '\t ' + info
     return runlog_headers
 
 @socketio.on('runlog data', namespace='/online')
@@ -417,7 +418,7 @@ def send_runlog(msg):
         return        
 
     rows = []
-    rows.append(get_runlog_headers().split(','))
+    rows.append(get_runlog_headers().split('\t'))
     last = last_run_number()
     if(n_rows > last):
         n_rows = last
@@ -469,14 +470,14 @@ def generate_runlog():
                 runlog_line += 'N/A'
             for attr in run_info['attr']:
                 if attr in data:
-                    runlog_line += ', ' + str(data[attr])
+                    runlog_line += '\t ' + str(data[attr])
                 else: 
-                    runlog_line += (', N/A')
+                    runlog_line += ('\t N/A')
             for info in run_info['log_info']:
                 if info in data:
-                    runlog_line += ', ' + str(data[info])
+                    runlog_line += '\t ' + str(data[info])
                 else:
-                    runlog_line += (', N/A')
+                    runlog_line += ('\t N/A')
 
             runlog.write(runlog_line)
 
@@ -736,11 +737,11 @@ if __name__ == '__main__':
 				      if( doc.run_number )
 					  emit(parseInt(doc.run_number), doc);
 				  }''')
-        #these three lines if authentication is needed to create the view
-        #couch = couchdb.Server()
-        #couch.resource.credentials = (USERNAME, PASSWORD) 
-        #db = couch[run_info['db_name']]
-        view_def.sync(db)
+        # these three lines if authentication is needed to create the view
+        # couch = couchdb.Server()
+        # couch.resource.credentials = (USERNAME, PWD) 
+        # db = couch[run_info['db_name']]
+        # view_def.sync(db)
         if '_design/all' not in db:
             print 'error: cannot create view. Do you have credentials?'
             sys.exit(0)
