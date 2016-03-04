@@ -2,7 +2,7 @@
 	"name":"caen_drs_0",
 	"device_id":2,
         "sampling_rate":1.0,
-        "pretrigger_delay":20,
+        "pretrigger_delay":0,
 	"use_drs4_corrections" : 1,
 	"channel_offset":[
 		0.4,

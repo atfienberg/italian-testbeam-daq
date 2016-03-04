@@ -99,7 +99,13 @@ int main(int argc, char *argv[]) {
              (pollitems[1].revents != ZMQ_POLLIN));
 
     if (pollitems[0].revents == ZMQ_POLLIN) {
-      rc = trigger_sck.recv(&msg, ZMQ_DONTWAIT);
+      do {
+	try{
+	  rc = trigger_sck.recv(&msg, ZMQ_DONTWAIT);
+	} catch (const zmq::error_t& e){
+	  continue;
+	} 
+      } while (rc != true);
 
       if (rc == true) {
         // Process the message.
@@ -136,13 +142,24 @@ int main(int argc, char *argv[]) {
     }
 
     if (pollitems[1].revents == ZMQ_POLLIN) {
-      rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
+      
+      do {
+	try{
+	  rc = handshake_sck.recv(&msg, ZMQ_DONTWAIT);
+	} catch (const zmq::error_t& e){
+	  continue;
+	} 
+      } while (rc != true);
 
       if (rc == true) {
         usleep(long_sleep);
 
         do {
-          rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
+	  try{
+	    rc = handshake_sck.send(msg, ZMQ_DONTWAIT);
+	  } catch (const zmq::error_t& e) {
+	    continue;
+	  }
         } while (rc == false);
       }
     }
@@ -282,14 +299,17 @@ int FreeConfig() {
   // (event builder has a worker list member variable)
   delete event_builder;
 
+  cout << "deleting workers " << endl;
   workers.Resize(0);
 
   // Delete the allocated writers.
   for (auto &writer : writers) {
+    cout << "deleting writer" << endl;
     delete writer;
   }
   writers.resize(0);
 
+  cout << "config freed" << endl;
   return 0;
 }
 

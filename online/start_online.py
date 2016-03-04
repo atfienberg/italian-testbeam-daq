@@ -45,8 +45,8 @@ socketio = SocketIO(app, async_mode='eventlet')
 #Define attributes of a run
 run_info = {}
 run_info['db_name'] = 'testbeam_db'
-# run_info['attr'] = ['Description', 'Bias Voltage', 'Temperature']
-run_info['attr'] = ['Description']
+run_info['attr'] = ['Description', 'Bias Voltage', 'Source Monitor Temperature', 'Pin Diode Temperature']
+#run_info['attr'] = ['Description']
 run_info['log_info'] = ['Events', 'Rate', 'Start Date', 'Start Time', 'End Date', 'End Time']
 run_info['runlog'] = 'runlog.csv'
 
@@ -68,6 +68,8 @@ def new_run():
     if last_run_number() != 0:
         last_data = get_last_data()
         last_data['Description'] = ''
+        last_data['Source Monitor Temperature'] = 'C'
+        last_data['Pin Diode Temperature'] = 'C'
 
     return render_template('new_run.html', info=run_info, data=last_data, 
                            last=last_run_number(), new=True, in_progress=running)
@@ -470,12 +472,12 @@ def generate_runlog():
                 runlog_line += 'N/A'
             for attr in run_info['attr']:
                 if attr in data:
-                    runlog_line += '\t ' + str(data[attr])
+                    runlog_line += '\t ' + str(data[attr]).strip().replace('\n', ' ')
                 else: 
                     runlog_line += ('\t N/A')
             for info in run_info['log_info']:
                 if info in data:
-                    runlog_line += '\t ' + str(data[info])
+                    runlog_line += '\t ' + str(data[info]).strip().replace('\n', ' ')
                 else:
                     runlog_line += ('\t N/A')
 
