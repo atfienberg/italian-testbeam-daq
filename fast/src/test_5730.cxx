@@ -49,7 +49,7 @@ int main(int argc, char const *argv[]) {
 
   cout << "value : " << data << endl;
 
-  cout << "set trace length: " << CAEN_DGTZ_SetRecordLength(handle, 500) << endl;
+  cout << "set trace length: " << CAEN_DGTZ_SetRecordLength(handle, CAEN_5730_LN) << endl;
 
   cout << "read trace length: " << CAEN_DGTZ_GetRecordLength(handle, &data) << endl;
 
@@ -155,7 +155,7 @@ int main(int argc, char const *argv[]) {
     }
 
     cout << bundle.event_index << endl;
-    cout << bundle.trace[0][250] << endl;
+    cout << bundle.trace[0][5000] << endl;
   }
   
   

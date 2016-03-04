@@ -11,7 +11,6 @@
     "sis_3302": {},
     "caen_1785": {},
     "caen_6742": {
-	"caen_5742" : "caen_5742_0.json"
     },
     "caen_1742": {
     },
@@ -38,7 +37,7 @@
       "in_use": true,
       "port": "tcp://127.0.0.1:42043",
       "high_water_mark": 10,
-      "max_trace_length": -1
+      "max_trace_length": 2000
     },
 
     "midas": {
