@@ -26,11 +26,11 @@ measured output voltage: <b id="bk_measured"></b>
 
       setInterval(function() {
 	  socket.emit('filter position?');
-	  //socket.emit('bk status');
+	  socket.emit('bk status');
       }, 5000);
 
       socket.emit('filter position?');
-      //socket.emit('bk status');	
+      socket.emit('bk status');	
 
       socket.on('filter position is: ', function(msg){
 	  $('#filterSetting').text(String(msg.position));
