@@ -5,6 +5,8 @@
 
   "post trigger comment": "post trigger delay is in percent, 0-100",
   "post_trigger_delay": 10,
+
+  "trigger_type" : "nim",
   
   "channel_offset": [
     0.35,
