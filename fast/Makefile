@@ -32,7 +32,7 @@ endif
 FLAGS += $(shell root-config --cflags)
 
 FLAGS += -Icore/include -Icore/json11
-LIBS = -L/usr/lib/i386-linux-gnu -lCore -lCint -lRIO -lNet -lHist -lGraf -lGpad -lTree -lRint -lMatrix -lMathCore -lThread -pthread -lm -ldl -rdynamic -lCAENDigitizer -lzmq
+LIBS = $(shell root-config --libs) -lCAENDigitizer -lzmq
 
 COREOBJ += core/build/json11.o
 
