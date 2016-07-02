@@ -44,8 +44,8 @@ socketio = SocketIO(app, async_mode='eventlet')
 
 #Define attributes of a run
 run_info = {}
-run_info['db_name'] = 'testbeam_db'
-run_info['attr'] = ['Description', 'Bias Voltage', 'Source Monitor Temperature', 'Pin Diode Temperature']
+run_info['db_name'] = 'cenpa_db'
+run_info['attr'] = ['Description', 'Bias Voltage', 'Nathan\'s mood']
 #run_info['attr'] = ['Description']
 run_info['log_info'] = ['Events', 'Rate', 'Start Date', 'Start Time', 'End Date', 'End Time']
 run_info['runlog'] = 'runlog.csv'
@@ -741,7 +741,7 @@ if __name__ == '__main__':
 				  }''')
         # these three lines if authentication is needed to create the view
         # couch = couchdb.Server()
-        # couch.resource.credentials = (USERNAME, PWD) 
+        # couch.resource.credentials = ('admin', 'g2precess') 
         # db = couch[run_info['db_name']]
         # view_def.sync(db)
         if '_design/all' not in db:
